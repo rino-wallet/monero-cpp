@@ -839,6 +839,50 @@ namespace monero {
     }
 
     /**
+     * Reconstructs unsigned multisig transactions, from their transaction hex. Then it partially signs them.
+     *
+     * @param multisig_tx_hex hex representation of the transactions
+     * @return the partially-signed transactions
+     */
+    virtual std::vector<std::shared_ptr<monero_tx_wallet>> reconstruct_tx(const std::string& multisig_tx_hex) {
+      throw std::runtime_error("reconstruct_tx() not supported");
+    }
+
+    /**
+     * Verifies that the data in the given transaction hex correspond to the given
+     * destinations. Then it reconstructs the unsigned multisig transactions, from their transaction hex.
+     * Then it partially signs them.
+     *
+     * @param multisig_tx_hex hex representation of the transactions
+     * @return the partially-signed transactions
+     */
+    virtual std::vector<std::shared_ptr<monero_tx_wallet>> reconstruct_tx(const std::string& multisig_tx_hex, const std::vector<monero::monero_destination>& destinations) {
+      throw std::runtime_error("reconstruct_tx() not supported");
+    }
+
+    /**
+     * Gets multisig seed.
+     *
+     * @param seed_pass Seed offset passphrase
+     * @return The seed
+     */
+    virtual std::string get_multisig_seed(const std::string& seed_pass) {
+      throw std::runtime_error("get_multisig_seed() not supported");
+    }
+
+    /**
+     * Loads (some of) the data from the tx blob.
+     *
+     * @param multisig_tx_hex hex representation of the transaction
+     * @return config data from the transaction
+     *
+     * Assumes that multisig_tx_hex only contains one transaction.
+     */
+    virtual monero_tx_config load_multisig_tx(const std::string& multisig_tx_hex) {
+      throw std::runtime_error("load_multisig_tx() not supported");
+    }
+
+    /**
      * Sweep unlocked funds according to the given config.
      *
      * @param config is the sweep configuration

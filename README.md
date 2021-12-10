@@ -1,5 +1,11 @@
 # Monero C++ Library
 
+## Cryptosphere-systems specific
+
+`.gitmodules` is hardcoding Gitlab username and access token for `luis`. Otherwise we're unable to clone `gitlab.cryptosphere-systems.com/wallet/monero` from this project. The token only has access to `read-repo`. We have to find a safer alternative though. For the time being this documents the hack
+
+## Overview
+
 A C++ library for creating Monero applications using native bindings to [monero v0.17.2.3 'Oxygen Orion'](https://github.com/monero-project/monero/tree/v0.17.2.3).
 
 * Supports fully client-side wallets by wrapping [wallet2.h](https://github.com/monero-project/monero/blob/master/src/wallet/wallet2.h).

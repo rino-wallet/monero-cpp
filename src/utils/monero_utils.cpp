@@ -299,3 +299,117 @@ std::shared_ptr<monero_tx> monero_utils::cn_tx_to_tx(const cryptonote::transacti
 //  rct::rctSig m_rct_signatures;
 //  mutable size_t blob_size;
 }
+
+
+bool monero_utils::MoneroDestinationValidator::validate_destinations(const tools::wallet2::multisig_tx_set& tx_set) {
+  // More or less a direct translation (read: copy/paste) of simple_wallet::accept_loaded_tx
+  using namespace cryptonote;
+
+  // Start with digging the addresses and amounts from the tx data.
+  uint64_t amount = 0, amount_to_dests = 0, change = 0;
+  size_t min_ring_size = ~0;
+  std::unordered_map<cryptonote::account_public_address, std::pair<std::string, uint64_t>> dests;
+  int first_known_non_zero_change_index = -1;
+  for (size_t n = 0; n < tx_set.m_ptx.size(); ++n)
+  {
+    const tools::wallet2::tx_construction_data &cd = tx_set.m_ptx[n].construction_data;
+
+    std::vector<tx_extra_field> tx_extra_fields;
+    bool has_encrypted_payment_id = false;
+    crypto::hash8 payment_id8 = crypto::null_hash8;
+    if (cryptonote::parse_tx_extra(cd.extra, tx_extra_fields))
+    {
+      tx_extra_nonce extra_nonce;
+      if (find_tx_extra_field_by_type(tx_extra_fields, extra_nonce))
+      {
+        crypto::hash payment_id;
+        if(get_encrypted_payment_id_from_tx_extra_nonce(extra_nonce.nonce, payment_id8))
+        {
+
+          // if none of the addresses are integrated addresses, it's a dummy one
+          bool is_dummy = true;
+          for (const auto &e: cd.dests)
+            if (e.is_integrated)
+              is_dummy = false;
+
+          if (!is_dummy)
+          {
+            has_encrypted_payment_id = true;
+          }
+        }
+      }
+    }
+
+    for (size_t s = 0; s < cd.sources.size(); ++s)
+    {
+      amount += cd.sources[s].amount;
+      size_t ring_size = cd.sources[s].outputs.size();
+      if (ring_size < min_ring_size)
+        min_ring_size = ring_size;
+    }
+    for (size_t d = 0; d < cd.splitted_dsts.size(); ++d)
+    {
+      const tx_destination_entry &entry = cd.splitted_dsts[d];
+      std::string address, standard_address = get_account_address_as_str(m_nettype, entry.is_subaddress, entry.addr);
+      if (has_encrypted_payment_id && !entry.is_subaddress && standard_address != entry.original)
+      {
+        address = get_account_integrated_address_as_str(m_nettype, entry.addr, payment_id8);
+        address += std::string(" (" + standard_address + " with encrypted payment id " + epee::string_tools::pod_to_hex(payment_id8) + ")");
+      }
+      else
+        address = standard_address;
+      auto i = dests.find(entry.addr);
+      if (i == dests.end())
+        dests.insert(std::make_pair(entry.addr, std::make_pair(address, entry.amount)));
+      else
+        i->second.second += entry.amount;
+      amount_to_dests += entry.amount;
+    }
+    if (cd.change_dts.amount > 0)
+    {
+      auto it = dests.find(cd.change_dts.addr);
+      if (it == dests.end())
+      {
+        throw std::runtime_error("Claimed change does not go to a paid address");
+      }
+      if (it->second.second < cd.change_dts.amount)
+      {
+        throw std::runtime_error("Claimed change is larger than payment to the change address");
+      }
+      if (cd.change_dts.amount > 0)
+      {
+        if (first_known_non_zero_change_index == -1)
+          first_known_non_zero_change_index = n;
+        if (memcmp(&cd.change_dts.addr, &tx_set.m_ptx[first_known_non_zero_change_index].construction_data.change_dts.addr, sizeof(cd.change_dts.addr)))
+        {
+          throw std::runtime_error("Change goes to more than one address");
+        }
+      }
+      change += cd.change_dts.amount;
+      it->second.second -= cd.change_dts.amount;
+      if (it->second.second == 0)
+        dests.erase(cd.change_dts.addr);
+    }
+  }
+
+  // Now that we have addresses and destinations in some useful format,
+  // search for them in the provided data.
+  size_t items_found = 0;
+  for (const auto &dest : dests)
+  {
+    if (dest.second.second > 0)
+    {
+      // It's n**2 but that should be fine because we're not looking for huge amounts of addresses.
+      for (auto md = m_destinations.begin(); md != m_destinations.end(); ++md)
+      {
+        if (md->m_address == dest.second.first && md->m_amount == dest.second.second)
+        {
+          items_found++;
+          break;
+        }
+      }
+    }
+  }
+
+  return items_found == m_destinations.size();
+}
