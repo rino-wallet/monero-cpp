@@ -56,8 +56,9 @@
 #define monero_utils_h
 
 #include "wallet/monero_wallet_model.h"
+#include "wallet/wallet2.h"
 #include "cryptonote_basic/cryptonote_basic.h"
-#include "serialization/keyvalue_serialization.h"	// TODO: consolidate with other binary deps?
+#include "serialization/keyvalue_serialization.h" // TODO: consolidate with other binary deps?
 #include "storages/portable_storage.h"
 
 /**
@@ -67,17 +68,19 @@ namespace monero_utils
 {
   using namespace cryptonote;
 
-  // ------------------------ CONSTANTS ---------------------------
+  // ------------------------------ CONSTANTS ---------------------------------
 
   static const int RING_SIZE = 12;  // network-enforced ring size
 
-  // ------------------------- ADDRESS VALIDATION -----------------------------
+  // -------------------------------- UTILS -----------------------------------
 
+  monero_integrated_address get_integrated_address(monero_network_type network_type, const std::string& standard_address, const std::string& payment_id);
   bool is_valid_address(const std::string& address, monero_network_type network_type);
+  bool is_valid_private_view_key(const std::string& private_view_key);
+  bool is_valid_private_spend_key(const std::string& private_spend_key);
   void validate_address(const std::string& address, monero_network_type network_type);
-
-  // ------------------------ BINARY SERIALIZATION ----------------------------
-
+  void validate_private_view_key(const std::string& private_view_key);
+  void validate_private_spend_key(const std::string& private_spend_key);
   void json_to_binary(const std::string &json, std::string &bin);
   void binary_to_json(const std::string &bin, std::string &json);
   void binary_blocks_to_json(const std::string &bin, std::string &json);
@@ -201,5 +204,14 @@ namespace monero_utils
   static void free(std::vector<std::shared_ptr<monero_block>> blocks) {
     for (std::shared_ptr<monero_block>& block : blocks) monero_utils::free(block);
   }
+
+  class MoneroDestinationValidator {
+  public:
+    MoneroDestinationValidator(const cryptonote::network_type& nettype, const std::vector<monero::monero_destination>& destinations) : m_nettype(nettype), m_destinations(destinations) { };
+    bool validate_destinations(const tools::wallet2::multisig_tx_set& tx_set);
+  private:
+    const cryptonote::network_type m_nettype;
+    const std::vector<monero::monero_destination> m_destinations;
+  };
 }
 #endif /* monero_utils_h */

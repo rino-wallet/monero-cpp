@@ -1172,6 +1172,7 @@ namespace monero {
     m_below_amount = config.m_below_amount;
     m_sweep_each_subaddress = config.m_sweep_each_subaddress;
     m_key_image = config.m_key_image;
+    m_skip_signing = config.m_skip_signing;
   }
 
   monero_tx_config monero_tx_config::copy() const {
@@ -1187,6 +1188,7 @@ namespace monero {
     rapidjson::Value value_num(rapidjson::kNumberType);
     if (m_priority != boost::none) monero_utils::add_json_member("priority", m_priority.get(), allocator, root, value_num);
     if (m_ring_size != boost::none) monero_utils::add_json_member("ringSize", m_ring_size.get(), allocator, root, value_num);
+    if (m_fee != boost::none) monero_utils::add_json_member("fee", m_fee.get(), allocator, root, value_num);
     if (m_account_index != boost::none) monero_utils::add_json_member("accountIndex", m_account_index.get(), allocator, root, value_num);
     if (m_unlock_height != boost::none) monero_utils::add_json_member("unlockHeight", m_unlock_height.get(), allocator, root, value_num);
     if (m_below_amount != boost::none) monero_utils::add_json_member("belowAmount", m_below_amount.get(), allocator, root, value_num);
@@ -1202,6 +1204,7 @@ namespace monero {
     if (m_can_split != boost::none) monero_utils::add_json_member("canSplit", m_can_split.get(), allocator, root);
     if (m_relay != boost::none) monero_utils::add_json_member("relay", m_relay.get(), allocator, root);
     if (m_sweep_each_subaddress != boost::none) monero_utils::add_json_member("sweepEachSubaddress", m_sweep_each_subaddress.get(), allocator, root);
+    if (m_skip_signing != boost::none) monero_utils::add_json_member("skipSigning", m_skip_signing.get(), allocator, root);
 
     // set sub-arrays
     if (!m_destinations.empty()) root.AddMember("destinations", monero_utils::to_rapidjson_val(allocator, m_destinations), allocator);
@@ -1251,6 +1254,7 @@ namespace monero {
       else if (key == std::string("belowAmount")) config->m_below_amount = it->second.get_value<uint64_t>();
       else if (key == std::string("sweepEachSubaddress")) config->m_sweep_each_subaddress = it->second.get_value<bool>();
       else if (key == std::string("keyImage")) config->m_key_image = it->second.data();
+      else if (key == std::string("skipSigning")) config->m_skip_signing = it->second.get_value<bool>();
     }
 
     return config;

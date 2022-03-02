@@ -359,6 +359,7 @@ namespace monero {
     boost::optional<uint64_t> m_below_amount;
     boost::optional<bool> m_sweep_each_subaddress;
     boost::optional<std::string> m_key_image;
+    boost::optional<bool> m_skip_signing;
 
     monero_tx_config() {}
     monero_tx_config(const monero_tx_config& config);
