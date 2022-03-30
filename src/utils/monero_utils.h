@@ -56,6 +56,7 @@
 #define monero_utils_h
 
 #include "wallet/monero_wallet_model.h"
+#include "wallet/wallet2.h"
 #include "cryptonote_basic/cryptonote_basic.h"
 #include "serialization/keyvalue_serialization.h" // TODO: consolidate with other binary deps?
 #include "storages/portable_storage.h"
@@ -203,5 +204,14 @@ namespace monero_utils
   static void free(std::vector<std::shared_ptr<monero_block>> blocks) {
     for (std::shared_ptr<monero_block>& block : blocks) monero_utils::free(block);
   }
+
+  class MoneroDestinationValidator {
+  public:
+    MoneroDestinationValidator(const cryptonote::network_type& nettype, const std::vector<monero::monero_destination>& destinations) : m_nettype(nettype), m_destinations(destinations) { };
+    bool validate_destinations(const tools::wallet2::multisig_tx_set& tx_set);
+  private:
+    const cryptonote::network_type m_nettype;
+    const std::vector<monero::monero_destination> m_destinations;
+  };
 }
 #endif /* monero_utils_h */

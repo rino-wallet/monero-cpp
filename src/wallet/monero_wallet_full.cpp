@@ -985,7 +985,7 @@ namespace monero {
 
       // notify spent outputs
       if (tx->m_outgoing_transfer != boost::none) {
-        
+
         // build dummy input for notification // TODO: this provides one input with outgoing amount like monero-wallet-rpc client, use real inputs instead
         std::shared_ptr<monero_output_wallet> input = std::make_shared<monero_output_wallet>();
         input->m_amount = tx->m_outgoing_transfer.get()->m_amount.get() + tx->m_fee.get();
@@ -1003,7 +1003,7 @@ namespace monero {
           block_notify->m_height = tx->get_height();
           block_notify->m_txs.push_back(tx_notify);
         }
-        
+
         // notify listeners
         for (monero_wallet_listener* listener : m_wallet.get_listeners()) listener->on_output_spent(*input);
       }
@@ -1159,6 +1159,39 @@ namespace monero {
     std::vector<std::string> languages;
     crypto::ElectrumWords::get_language_list(languages, true);
     return languages;
+  }
+
+  monero_message_signature_result monero_wallet_full::verify_message_static(const std::string& msg, const std::string& address, const std::string& signature, monero_network_type nettype) {
+
+    // validate and parse address or url
+    cryptonote::address_parse_info info;
+    std::string err = "Invalid address";
+    if (!get_account_address_from_str_or_url(info, static_cast<cryptonote::network_type>(nettype), address,
+      [&err](const std::string &url, const std::vector<std::string> &addresses, bool dnssec_valid)->std::string {
+        if (!dnssec_valid) {
+          err = std::string("Invalid DNSSEC for ") + url;
+          return {};
+        }
+        if (addresses.empty()) {
+          err = std::string("No Monero address found at ") + url;
+          return {};
+        }
+        return addresses[0];
+      }))
+    {
+      throw std::runtime_error(err);
+    }
+
+    // verify message
+    tools:wallet2::message_signature_result_t result_w2 = tools::wallet2::verify_static(msg, info.address, signature);
+
+    // translate result
+    monero_message_signature_result result;
+    result.m_is_good = result_w2.valid;
+    result.m_is_old = result_w2.old;
+    result.m_signature_type = result_w2.type == tools::wallet2::message_signature_type_t::sign_with_spend_key ? monero_message_signature_type::SIGN_WITH_SPEND_KEY : monero_message_signature_type::SIGN_WITH_VIEW_KEY;
+    result.m_version = result_w2.version;
+    return result;
   }
 
   // ----------------------------- WALLET METHODS -----------------------------
@@ -1380,7 +1413,7 @@ namespace monero {
     if (result == 0) result = get_daemon_height(); // TODO monero-project: target height can be 0 when daemon is synced.  Use blockchain height instead
     return result;
   }
-  
+
   uint64_t monero_wallet_full::get_height_by_date(uint16_t year, uint8_t month, uint8_t day) const {
     return m_w2->get_blockchain_height_by_date(year, month, day);
   }
@@ -1593,7 +1626,7 @@ namespace monero {
   std::vector<std::shared_ptr<monero_tx_wallet>> monero_wallet_full::get_txs() const {
     return get_txs(monero_tx_query());
   }
-  
+
   std::vector<std::shared_ptr<monero_tx_wallet>> monero_wallet_full::get_txs(const monero_tx_query& query) const {
     std::vector<std::string> missing_tx_hashes;
     std::vector<std::shared_ptr<monero_tx_wallet>> txs = get_txs(query, missing_tx_hashes);
@@ -1856,16 +1889,18 @@ namespace monero {
     uint32_t priority = m_w2->adjust_priority(config.m_priority == boost::none ? 0 : config.m_priority.get());
     uint64_t unlock_height = config.m_unlock_height == boost::none ? 0 : config.m_unlock_height.get();
     uint32_t account_index = config.m_account_index.get();
+    bool skip_signing = config.m_skip_signing == boost::none ? false : config.m_skip_signing.get();
+    std::cout << "SKIP_SIGNING: " << skip_signing << std::endl;
     std::set<uint32_t> subaddress_indices;
     for (const uint32_t& subaddress_idx : config.m_subaddress_indices) subaddress_indices.insert(subaddress_idx);
 
     // prepare transactions
-    std::vector<wallet2::pending_tx> ptx_vector = m_w2->create_transactions_2(dsts, mixin, unlock_height, priority, extra, account_index, subaddress_indices);
+    std::vector<wallet2::pending_tx> ptx_vector = m_w2->create_transactions_2(dsts, mixin, unlock_height, priority, extra, account_index, subaddress_indices, skip_signing);
     if (ptx_vector.empty()) throw std::runtime_error("No transaction created");
 
     // check if request cannot be fulfilled due to splitting
     if (config.m_can_split != boost::none && config.m_can_split.get() == false && ptx_vector.size() != 1) {
-      throw std::runtime_error("Transaction would be too large.  Try create_txs()");
+      throw std::runtime_error("Transaction would be too large.  Try create_txs()");  // This IS create_txs.
     }
 
     // config for fill_response()
@@ -1964,6 +1999,198 @@ namespace monero {
     // notify listeners of spent funds
     if (relay) m_w2_listener->on_spend_txs(txs);
     return txs;
+  }
+
+
+  std::vector<std::shared_ptr<monero_tx_wallet>> monero_wallet_full::reconstruct_tx(const std::string& multisig_tx_hex) {
+    std::vector<monero::monero_destination> destinations;
+    return monero_wallet_full::reconstruct_tx(multisig_tx_hex, destinations);
+  }
+
+  std::vector<std::shared_ptr<monero_tx_wallet>> monero_wallet_full::reconstruct_tx(const std::string& multisig_tx_hex, const std::vector<monero::monero_destination>& destinations) {
+    // 1. Parse information out of multisig_tx_hex. Similar to sign_multisig_tx_hex.
+
+    // validate state and args
+    bool ready;
+    uint32_t threshold, total;
+    if (!m_w2->multisig(&ready, &threshold, &total)) throw std::runtime_error("This wallet is not multisig");
+    if (!ready) throw std::runtime_error("This wallet is multisig, but not yet finalized");
+
+    // validate and parse multisig tx hex as blob
+    cryptonote::blobdata multisig_tx_blob;
+    if (!epee::string_tools::parse_hexstr_to_binbuff(multisig_tx_hex, multisig_tx_blob)) {
+      throw std::runtime_error("Failed to parse hex");
+    }
+
+    // validate and parse blob as multisig_tx_set
+    tools::wallet2::multisig_tx_set ms_tx_set;
+    if (!m_w2->load_multisig_tx(multisig_tx_blob, ms_tx_set, NULL)) {
+      throw std::runtime_error("Failed to parse multisig tx data");
+    }
+
+    monero_utils::MoneroDestinationValidator validator(m_w2->nettype(), destinations);
+    if (!validator.validate_destinations(ms_tx_set)) {
+      throw std::runtime_error("Tx does not match the expected destinations.");
+    }
+
+    // 2. Call reconstruct_transaction.
+    std::vector<tools::wallet2::pending_tx> ptx_vector;
+    ptx_vector = m_w2->reconstruct_transaction(ms_tx_set);
+
+    // 3. Generate the response. Similar to create_txs.
+    if (ptx_vector.empty()) throw std::runtime_error("No transaction created");
+
+    // config for fill_response()
+    bool get_tx_keys = true;
+    bool get_tx_hex = true;
+    bool get_tx_metadata = true;
+    bool relay = false;
+
+    // commit txs (if relaying) and get response using wallet rpc's fill_response()
+    std::list<std::string> tx_keys;
+    std::list<uint64_t> tx_amounts;
+    std::list<uint64_t> tx_fees;
+    std::list<uint64_t> tx_weights;
+    std::string new_multisig_tx_hex;
+    std::string unsigned_tx_hex;
+    std::list<std::string> tx_hashes;
+    std::list<std::string> tx_blobs;
+    std::list<std::string> tx_metadatas;
+    epee::json_rpc::error err;
+    std::list<key_image_list> input_key_images_list;
+    if (!fill_response(m_w2.get(), ptx_vector, get_tx_keys, tx_keys, tx_amounts, tx_fees, tx_weights, new_multisig_tx_hex, unsigned_tx_hex, !relay, tx_hashes, get_tx_hex, tx_blobs, get_tx_metadata, tx_metadatas, input_key_images_list, err)) {
+      throw std::runtime_error("need to handle error filling response!");  // TODO
+    }
+
+    // build sent txs from results  // TODO: break this into separate utility function
+    std::vector<std::shared_ptr<monero_tx_wallet>> txs;
+    auto tx_hashes_iter = tx_hashes.begin();
+    auto tx_keys_iter = tx_keys.begin();
+    auto tx_amounts_iter = tx_amounts.begin();
+    auto tx_fees_iter = tx_fees.begin();
+    auto tx_weights_iter = tx_weights.begin();
+    auto tx_blobs_iter = tx_blobs.begin();
+    auto tx_metadatas_iter = tx_metadatas.begin();
+    auto input_key_images_list_iter = input_key_images_list.begin();
+    while (tx_fees_iter != tx_fees.end()) {
+
+      // init tx with outgoing transfer from filled values
+      std::shared_ptr<monero_tx_wallet> tx = std::make_shared<monero_tx_wallet>();
+      txs.push_back(tx);
+      tx->m_hash = *tx_hashes_iter;
+      tx->m_key = *tx_keys_iter;
+      tx->m_fee = *tx_fees_iter;
+      tx->m_weight = *tx_weights_iter;
+      tx->m_full_hex = *tx_blobs_iter;
+      tx->m_metadata = *tx_metadatas_iter;
+      std::shared_ptr<monero_outgoing_transfer> out_transfer = std::make_shared<monero_outgoing_transfer>();
+      tx->m_outgoing_transfer = out_transfer;
+      out_transfer->m_amount = *tx_amounts_iter;
+
+      // init inputs with key images
+      std::list<std::string> input_key_images = (*input_key_images_list_iter).key_images;
+      for (const std::string& input_key_image : input_key_images) {
+        std::shared_ptr<monero_output_wallet> input = std::make_shared<monero_output_wallet>();
+        input->m_tx = tx;
+        tx->m_inputs.push_back(input);
+        input->m_key_image = std::make_shared<monero_key_image>();
+        input->m_key_image.get()->m_hex = input_key_image;
+      }
+
+      // init other known fields
+      tx->m_is_outgoing = true;
+      tx->m_payment_id = boost::none;
+      tx->m_is_confirmed = false;
+      tx->m_is_miner_tx = false;
+      tx->m_is_failed = false;   // TODO: test and handle if true
+      tx->m_relay = relay;
+      tx->m_is_relayed = relay;
+      tx->m_in_tx_pool = relay;
+      if (!tx->m_is_failed.get() && tx->m_is_relayed.get()) tx->m_is_double_spend_seen = false;  // TODO: test and handle if true
+      tx->m_num_confirmations = 0;
+      tx->m_ring_size = monero_utils::RING_SIZE;
+      // unlock_time should be common to all pending_txs in the vector
+      tx->m_unlock_height = ptx_vector[0].construction_data.unlock_time;
+      tx->m_is_locked = true;
+      if (tx->m_is_relayed.get()) tx->m_last_relayed_timestamp = static_cast<uint64_t>(time(NULL));  // std::set last relayed timestamp to current time iff relayed  // TODO monero-project: this should be encapsulated in wallet2
+      // account and subaddresses indices should be common to all pending_txs in the vector.
+      out_transfer->m_account_index = ptx_vector[0].construction_data.subaddr_account;
+      std::copy(ptx_vector[0].construction_data.subaddr_indices.begin(), ptx_vector[0].construction_data.subaddr_indices.begin(), std::back_inserter(out_transfer->m_subaddress_indices));
+
+      /**
+       * Extract the ORIGINALLY INTENDED destinations from a cryptonote::pending_tx. This attempts to
+       * be the equivalent of config.get_normalized_destinations(), w/o having access to config.
+       *
+       * cryptonote::pending_tx.construction_data.dests should hold the transaction destinations
+       * originally intended by the user. Which are not always the same as the destinations that the
+       * transaction ends up with. Example:
+       *
+       * I intend to transfer 1xmr to address1, so my original destinations look like [(addr1, 1),].
+       * But that involved gathering a ton of unspents that don't fit in a single tx, so the result
+       * might very well be 2 transactions with the following destinations respectively: [(addr1, 0.3),]
+       * and [(addr1, 0.7)]
+       */
+      auto intended_destinations = ptx_vector[0].construction_data.dests;
+      for (auto dest : intended_destinations) {
+        out_transfer->m_destinations.push_back(
+          // dest.address() would be the safest bet to get the address, but I didn't figure out how
+          // to use it here. dest.address() also suggests that dest.original would contain the
+          // address. I'm not 100% though.
+          std::make_shared<monero_destination>(dest.original, dest.amount)
+        );
+      }
+
+      // iterate to next element
+      tx_keys_iter++;
+      tx_amounts_iter++;
+      tx_fees_iter++;
+      tx_hashes_iter++;
+      tx_blobs_iter++;
+      tx_metadatas_iter++;
+      input_key_images_list_iter++;
+    }
+
+    // build tx set
+    std::shared_ptr<monero_tx_set> tx_set = std::make_shared<monero_tx_set>();
+    tx_set->m_txs = txs;
+    for (int i = 0; i < txs.size(); i++) txs[i]->m_tx_set = tx_set;
+    if (!new_multisig_tx_hex.empty()) tx_set->m_multisig_tx_hex = new_multisig_tx_hex;
+    if (!unsigned_tx_hex.empty()) tx_set->m_unsigned_tx_hex = unsigned_tx_hex;
+
+    // notify listeners of spent funds
+    if (relay) m_w2_listener->on_spend_txs(txs);
+    return txs;
+  }
+
+  std::string monero_wallet_full::get_multisig_seed(const std::string& seed_pass) {
+    epee::wipeable_string seed;
+    if (!m_w2->get_multisig_seed(seed, seed_pass, true)) {
+      throw std::runtime_error("Error in obtaining multisig seed.");
+    }
+
+    // There's no default conversion from epee:wipeable_string to std::string
+    std::string seed_str(seed.data(), seed.size());
+    return seed_str;
+  }
+
+  monero_tx_config monero_wallet_full::load_multisig_tx(const std::string& multisig_tx_hex) {
+
+    // validate and parse multisig tx hex as blob
+    cryptonote::blobdata multisig_tx_blob;
+    if (!epee::string_tools::parse_hexstr_to_binbuff(multisig_tx_hex, multisig_tx_blob)) {
+      throw std::runtime_error("Failed to parse hex");
+    }
+
+    tools::wallet2::multisig_tx_set ms_tx_set;
+    if (!m_w2->load_multisig_tx(multisig_tx_blob, ms_tx_set, NULL)) {
+      throw std::runtime_error("Failed to parse multisig tx data");
+    }
+
+    monero_tx_config config = {};
+
+    // If we want to load more data, add it here.
+    config.m_fee = ms_tx_set.m_ptx[0].fee;
+    return config;
   }
 
   std::vector<std::shared_ptr<monero_tx_wallet>> monero_wallet_full::sweep_unlocked(const monero_tx_config& config) {
@@ -3222,13 +3449,19 @@ namespace monero {
     int num_outputs = m_w2->import_multisig(multisig_blobs);
 
     // if daemon is trusted, rescan spent
-    if (is_daemon_trusted()) rescan_spent();
+    // offline multisig wallet should not rescan - it's offline
+    // if (is_daemon_trusted()) rescan_spent();
 
     // return the number of outputs signed by the given multisig hex
     return num_outputs;
   }
 
   monero_multisig_sign_result monero_wallet_full::sign_multisig_tx_hex(const std::string& multisig_tx_hex) {
+    std::vector<monero::monero_destination> destinations;
+    return monero_wallet_full::sign_multisig_tx_hex(multisig_tx_hex, destinations);
+  }
+
+  monero_multisig_sign_result monero_wallet_full::sign_multisig_tx_hex(const std::string& multisig_tx_hex, const std::vector<monero::monero_destination>& destinations) {
 
     // validate state and args
     bool ready;
@@ -3247,6 +3480,12 @@ namespace monero {
     if (!m_w2->load_multisig_tx(multisig_tx_blob, ms_tx_set, NULL)) {
       throw std::runtime_error("Failed to parse multisig tx data");
     }
+
+    monero_utils::MoneroDestinationValidator validator(m_w2->nettype(), destinations);
+    if (!validator.validate_destinations(ms_tx_set)) {
+      throw std::runtime_error("The transaction from Backend doesn't match the desired destinations");
+    }
+
 
     // sign multisig txs
     bool success = false;
@@ -3690,4 +3929,5 @@ namespace monero {
     m_w2_listener->on_sync_end();
     return result;
   }
+
 }

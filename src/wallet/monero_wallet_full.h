@@ -160,6 +160,8 @@ namespace monero {
      */
     static std::vector<std::string> get_mnemonic_languages();
 
+    static monero_message_signature_result verify_message_static(const std::string& msg, const std::string& address, const std::string& signature, monero_network_type nettype);
+
     // ----------------------------- WALLET METHODS -----------------------------
 
     /**
@@ -232,6 +234,10 @@ namespace monero {
     void thaw_output(const std::string& key_image) override;
     bool is_output_frozen(const std::string& key_image) override;
     std::vector<std::shared_ptr<monero_tx_wallet>> create_txs(const monero_tx_config& config) override;
+    std::vector<std::shared_ptr<monero_tx_wallet>> reconstruct_tx(const std::string& multisig_tx_hex, const std::vector<monero::monero_destination>& destinations) override;
+    std::vector<std::shared_ptr<monero_tx_wallet>> reconstruct_tx(const std::string& multisig_tx_hex) override;
+    std::string get_multisig_seed(const std::string& seed_pass) override;
+    monero_tx_config load_multisig_tx(const std::string& multisig_tx_hex) override;
     std::vector<std::shared_ptr<monero_tx_wallet>> sweep_unlocked(const monero_tx_config& config) override;
     std::shared_ptr<monero_tx_wallet> sweep_output(const monero_tx_config& config) override;
     std::vector<std::shared_ptr<monero_tx_wallet>> sweep_dust(bool relay = false) override;
@@ -273,6 +279,7 @@ namespace monero {
     std::string get_multisig_hex() override;
     int import_multisig_hex(const std::vector<std::string>& multisig_hexes) override;
     monero_multisig_sign_result sign_multisig_tx_hex(const std::string& multisig_tx_hex) override;
+    monero_multisig_sign_result sign_multisig_tx_hex(const std::string& multisig_tx_hex, const std::vector<monero::monero_destination>& destinations);
     std::vector<std::string> submit_multisig_tx_hex(const std::string& signed_multisig_tx_hex) override;
     void save() override;
     void move_to(std::string path, std::string password) override;
