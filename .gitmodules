@@ -1,3 +1,4 @@
 [submodule "external/monero-project"]
 	path = external/monero-project
-	url = https://github.com/woodser/monero
+	url = https://github.com/rino-wallet/monero
+	branch = rino
