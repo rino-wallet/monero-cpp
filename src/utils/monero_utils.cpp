@@ -416,7 +416,11 @@ bool monero_utils::MoneroDestinationValidator::validate_destinations(const tools
       if (has_encrypted_payment_id && !entry.is_subaddress && standard_address != entry.original)
       {
         address = get_account_integrated_address_as_str(m_nettype, entry.addr, payment_id8);
-        address += std::string(" (" + standard_address + " with encrypted payment id " + epee::string_tools::pod_to_hex(payment_id8) + ")");
+
+        // simple_wallet::accept_loaded_tx had this part for nice printing. In RINO we want to compare only
+        // the original address with what the user specified. Appending the standard address and payment id makes
+        // the comparison fail.
+        // address += std::string(" (" + standard_address + " with encrypted payment id " + epee::string_tools::pod_to_hex(payment_id8) + ")");
       }
       else
         address = standard_address;

@@ -1,0 +1,869 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+DEFAULT_CONNECTION_TIMEOUT_MILLIS	wallet/monero_wallet_full.cpp	/^  static const int DEFAULT_CONNECTION_TIMEOUT_MILLIS = 1000 * 30; \/\/ default connection timeout 30 sec$/;"	m	namespace:monero	file:
+DEFAULT_PAYMENT_ID	daemon/monero_daemon_model.cpp	/^  const std::string monero_tx::DEFAULT_PAYMENT_ID = std::string("0000000000000000");$/;"	m	class:monero::monero_tx	file:
+DEFAULT_PAYMENT_ID	daemon/monero_daemon_model.h	/^    static const std::string DEFAULT_PAYMENT_ID;  \/\/ default payment id "0000000000000000"$/;"	m	struct:monero::monero_tx
+MoneroDestinationValidator	utils/monero_utils.h	/^    MoneroDestinationValidator(const cryptonote::network_type& nettype, const std::vector<monero::monero_destination>& destinations) : m_nettype(nettype), m_destinations(destinations) { };$/;"	f	class:monero_utils::MoneroDestinationValidator
+MoneroDestinationValidator	utils/monero_utils.h	/^  class MoneroDestinationValidator {$/;"	c	namespace:monero_utils
+RING_SIZE	utils/monero_utils.h	/^  static const int RING_SIZE = 12;  \/\/ network-enforced ring size$/;"	m	namespace:monero_utils
+STRICT	wallet/monero_wallet_full.cpp	/^  static const bool STRICT = false; \/\/ relies exclusively on blockchain data if true, includes local wallet data if false TODO: good use case to expose externally?$/;"	m	namespace:monero	file:
+add_address_book_entry	wallet/monero_wallet.h	/^    virtual uint64_t add_address_book_entry(const std::string& address, const std::string& description) {$/;"	f	class:monero::monero_wallet
+add_address_book_entry	wallet/monero_wallet_full.cpp	/^  uint64_t monero_wallet_full::add_address_book_entry(const std::string& address, const std::string& description) {$/;"	f	class:monero::monero_wallet_full
+add_json_member	utils/monero_utils.cpp	/^void monero_utils::add_json_member(std::string key, bool val, rapidjson::Document::AllocatorType& allocator, rapidjson::Value& root) {$/;"	f	class:monero_utils
+add_json_member	utils/monero_utils.cpp	/^void monero_utils::add_json_member(std::string key, std::string val, rapidjson::Document::AllocatorType& allocator, rapidjson::Value& root, rapidjson::Value& field) {$/;"	f	class:monero_utils
+add_json_member	utils/monero_utils.h	/^  void add_json_member(std::string key, T val, rapidjson::Document::AllocatorType& allocator, rapidjson::Value& root, rapidjson::Value& field) {$/;"	f	namespace:monero_utils
+add_listener	wallet/monero_wallet.h	/^    virtual void add_listener(monero_wallet_listener& listener) {$/;"	f	class:monero::monero_wallet
+add_listener	wallet/monero_wallet_full.cpp	/^  void monero_wallet_full::add_listener(monero_wallet_listener& listener) {$/;"	f	class:monero::monero_wallet_full
+binary_blocks_to_json	utils/monero_utils.cpp	/^void monero_utils::binary_blocks_to_json(const std::string &bin, std::string &json) {$/;"	f	class:monero_utils
+binary_to_json	utils/monero_utils.cpp	/^void monero_utils::binary_to_json(const std::string &bin, std::string &json) {$/;"	f	class:monero_utils
+bool_equals	wallet/monero_wallet_full.cpp	/^  bool bool_equals(bool val, const boost::optional<bool>& opt_val) {$/;"	f	namespace:monero
+build_tx_with_incoming_transfer	wallet/monero_wallet_full.cpp	/^  std::shared_ptr<monero_tx_wallet> build_tx_with_incoming_transfer(tools::wallet2& m_w2, uint64_t height, const crypto::hash &payment_id, const tools::wallet2::payment_details &pd) {$/;"	f	namespace:monero
+build_tx_with_incoming_transfer_unconfirmed	wallet/monero_wallet_full.cpp	/^  std::shared_ptr<monero_tx_wallet> build_tx_with_incoming_transfer_unconfirmed(const tools::wallet2& m_w2, uint64_t height, const crypto::hash &payment_id, const tools::wallet2::pool_payment_details &ppd) {$/;"	f	namespace:monero
+build_tx_with_outgoing_transfer	wallet/monero_wallet_full.cpp	/^  std::shared_ptr<monero_tx_wallet> build_tx_with_outgoing_transfer(tools::wallet2& m_w2, uint64_t height, const crypto::hash &txid, const tools::wallet2::confirmed_transfer_details &pd) {$/;"	f	namespace:monero
+build_tx_with_outgoing_transfer_unconfirmed	wallet/monero_wallet_full.cpp	/^  std::shared_ptr<monero_tx_wallet> build_tx_with_outgoing_transfer_unconfirmed(const tools::wallet2& m_w2, const crypto::hash &txid, const tools::wallet2::unconfirmed_transfer_details &pd) {$/;"	f	namespace:monero
+build_tx_with_vout	wallet/monero_wallet_full.cpp	/^  std::shared_ptr<monero_tx_wallet> build_tx_with_vout(tools::wallet2& m_w2, const tools::wallet2::transfer_details& td) {$/;"	f	namespace:monero
+change_password	wallet/monero_wallet.h	/^    virtual void change_password(const std::string& old_password, const std::string& new_password) {$/;"	f	class:monero::monero_wallet
+change_password	wallet/monero_wallet_full.cpp	/^  void monero_wallet_full::change_password(const std::string& old_password, const std::string& new_password) {$/;"	f	class:monero::monero_wallet_full
+check_for_changed_balances	wallet/monero_wallet_full.cpp	/^    bool check_for_changed_balances() {$/;"	f	struct:monero::wallet2_listener	file:
+check_for_changed_unlocked_txs	wallet/monero_wallet_full.cpp	/^    void check_for_changed_unlocked_txs() {$/;"	f	struct:monero::wallet2_listener	file:
+check_reserve_proof	wallet/monero_wallet.h	/^    virtual std::shared_ptr<monero_check_reserve> check_reserve_proof(const std::string& address, const std::string& message, const std::string& signature) const {$/;"	f	class:monero::monero_wallet
+check_reserve_proof	wallet/monero_wallet_full.cpp	/^  std::shared_ptr<monero_check_reserve> monero_wallet_full::check_reserve_proof(const std::string& address, const std::string& message, const std::string& signature) const {$/;"	f	class:monero::monero_wallet_full
+check_spend_proof	wallet/monero_wallet.h	/^    virtual bool check_spend_proof(const std::string& tx_hash, const std::string& message, const std::string& signature) const {$/;"	f	class:monero::monero_wallet
+check_spend_proof	wallet/monero_wallet_full.cpp	/^  bool monero_wallet_full::check_spend_proof(const std::string& tx_hash, const std::string& message, const std::string& signature) const {$/;"	f	class:monero::monero_wallet_full
+check_tx_key	wallet/monero_wallet.h	/^    virtual std::shared_ptr<monero_check_tx> check_tx_key(const std::string& tx_hash, const std::string& tx_key, const std::string& address) const {$/;"	f	class:monero::monero_wallet
+check_tx_key	wallet/monero_wallet_full.cpp	/^  std::shared_ptr<monero_check_tx> monero_wallet_full::check_tx_key(const std::string& tx_hash, const std::string& tx_key, const std::string& address) const {$/;"	f	class:monero::monero_wallet_full
+check_tx_proof	wallet/monero_wallet.h	/^    virtual std::shared_ptr<monero_check_tx> check_tx_proof(const std::string& tx_hash, const std::string& address, const std::string& message, const std::string& signature) const {$/;"	f	class:monero::monero_wallet
+check_tx_proof	wallet/monero_wallet_full.cpp	/^  std::shared_ptr<monero_check_tx> monero_wallet_full::check_tx_proof(const std::string& tx_hash, const std::string& address, const std::string& message, const std::string& signature) const {$/;"	f	class:monero::monero_wallet_full
+close	wallet/monero_wallet.h	/^    virtual void close(bool save = false) {$/;"	f	class:monero::monero_wallet
+close	wallet/monero_wallet_full.cpp	/^  void monero_wallet_full::close(bool save) {$/;"	f	class:monero::monero_wallet_full
+close	wallet/monero_wallet_keys.cpp	/^  void monero_wallet_keys::close(bool save) {$/;"	f	class:monero::monero_wallet_keys
+cn_block_to_block	utils/monero_utils.cpp	/^std::shared_ptr<monero_block> monero_utils::cn_block_to_block(const cryptonote::block& cn_block) {$/;"	f	class:monero_utils
+cn_tx_to_tx	utils/monero_utils.cpp	/^std::shared_ptr<monero_tx> monero_utils::cn_tx_to_tx(const cryptonote::transaction& cn_tx, bool init_as_tx_wallet) {$/;"	f	class:monero_utils
+copy	daemon/monero_daemon_model.cpp	/^  std::shared_ptr<monero_block> monero_block::copy(const std::shared_ptr<monero_block>& src, const std::shared_ptr<monero_block>& tgt) const {$/;"	f	class:monero::monero_block
+copy	daemon/monero_daemon_model.cpp	/^  std::shared_ptr<monero_block_header> monero_block_header::copy(const std::shared_ptr<monero_block_header>& src, const std::shared_ptr<monero_block_header>& tgt) const {$/;"	f	class:monero::monero_block_header
+copy	daemon/monero_daemon_model.cpp	/^  std::shared_ptr<monero_key_image> monero_key_image::copy(const std::shared_ptr<monero_key_image>& src, const std::shared_ptr<monero_key_image>& tgt) const {$/;"	f	class:monero::monero_key_image
+copy	daemon/monero_daemon_model.cpp	/^  std::shared_ptr<monero_output> monero_output::copy(const std::shared_ptr<monero_output>& src, const std::shared_ptr<monero_output>& tgt) const {$/;"	f	class:monero::monero_output
+copy	daemon/monero_daemon_model.cpp	/^  std::shared_ptr<monero_tx> monero_tx::copy(const std::shared_ptr<monero_tx>& src, const std::shared_ptr<monero_tx>& tgt) const {$/;"	f	class:monero::monero_tx
+copy	wallet/monero_wallet_model.cpp	/^  monero_tx_config monero_tx_config::copy() const {$/;"	f	class:monero::monero_tx_config
+copy	wallet/monero_wallet_model.cpp	/^  std::shared_ptr<monero_destination> monero_destination::copy(const std::shared_ptr<monero_destination>& src, const std::shared_ptr<monero_destination>& tgt) const {$/;"	f	class:monero::monero_destination
+copy	wallet/monero_wallet_model.cpp	/^  std::shared_ptr<monero_incoming_transfer> monero_incoming_transfer::copy(const std::shared_ptr<monero_incoming_transfer>& src, const std::shared_ptr<monero_incoming_transfer>& tgt) const {$/;"	f	class:monero::monero_incoming_transfer
+copy	wallet/monero_wallet_model.cpp	/^  std::shared_ptr<monero_incoming_transfer> monero_incoming_transfer::copy(const std::shared_ptr<monero_transfer>& src, const std::shared_ptr<monero_transfer>& tgt) const {$/;"	f	class:monero::monero_incoming_transfer
+copy	wallet/monero_wallet_model.cpp	/^  std::shared_ptr<monero_outgoing_transfer> monero_outgoing_transfer::copy(const std::shared_ptr<monero_outgoing_transfer>& src, const std::shared_ptr<monero_outgoing_transfer>& tgt) const {$/;"	f	class:monero::monero_outgoing_transfer
+copy	wallet/monero_wallet_model.cpp	/^  std::shared_ptr<monero_outgoing_transfer> monero_outgoing_transfer::copy(const std::shared_ptr<monero_transfer>& src, const std::shared_ptr<monero_transfer>& tgt) const {$/;"	f	class:monero::monero_outgoing_transfer
+copy	wallet/monero_wallet_model.cpp	/^  std::shared_ptr<monero_output_query> monero_output_query::copy(const std::shared_ptr<monero_output>& src, const std::shared_ptr<monero_output>& tgt) const {$/;"	f	class:monero::monero_output_query
+copy	wallet/monero_wallet_model.cpp	/^  std::shared_ptr<monero_output_query> monero_output_query::copy(const std::shared_ptr<monero_output_query>& src, const std::shared_ptr<monero_output_query>& tgt) const {$/;"	f	class:monero::monero_output_query
+copy	wallet/monero_wallet_model.cpp	/^  std::shared_ptr<monero_output_query> monero_output_query::copy(const std::shared_ptr<monero_output_wallet>& src, const std::shared_ptr<monero_output_wallet>& tgt) const {$/;"	f	class:monero::monero_output_query
+copy	wallet/monero_wallet_model.cpp	/^  std::shared_ptr<monero_output_wallet> monero_output_wallet::copy(const std::shared_ptr<monero_output>& src, const std::shared_ptr<monero_output>& tgt) const {$/;"	f	class:monero::monero_output_wallet
+copy	wallet/monero_wallet_model.cpp	/^  std::shared_ptr<monero_output_wallet> monero_output_wallet::copy(const std::shared_ptr<monero_output_wallet>& src, const std::shared_ptr<monero_output_wallet>& tgt) const {$/;"	f	class:monero::monero_output_wallet
+copy	wallet/monero_wallet_model.cpp	/^  std::shared_ptr<monero_transfer> monero_transfer::copy(const std::shared_ptr<monero_transfer>& src, const std::shared_ptr<monero_transfer>& tgt) const {$/;"	f	class:monero::monero_transfer
+copy	wallet/monero_wallet_model.cpp	/^  std::shared_ptr<monero_transfer_query> monero_transfer_query::copy(const std::shared_ptr<monero_transfer>& src, const std::shared_ptr<monero_transfer>& tgt) const {$/;"	f	class:monero::monero_transfer_query
+copy	wallet/monero_wallet_model.cpp	/^  std::shared_ptr<monero_transfer_query> monero_transfer_query::copy(const std::shared_ptr<monero_transfer_query>& src, const std::shared_ptr<monero_transfer_query>& tgt) const {$/;"	f	class:monero::monero_transfer_query
+copy	wallet/monero_wallet_model.cpp	/^  std::shared_ptr<monero_tx_query> monero_tx_query::copy(const std::shared_ptr<monero_tx>& src, const std::shared_ptr<monero_tx>& tgt) const {$/;"	f	class:monero::monero_tx_query
+copy	wallet/monero_wallet_model.cpp	/^  std::shared_ptr<monero_tx_query> monero_tx_query::copy(const std::shared_ptr<monero_tx_query>& src, const std::shared_ptr<monero_tx_query>& tgt) const {$/;"	f	class:monero::monero_tx_query
+copy	wallet/monero_wallet_model.cpp	/^  std::shared_ptr<monero_tx_query> monero_tx_query::copy(const std::shared_ptr<monero_tx_wallet>& src, const std::shared_ptr<monero_tx_wallet>& tgt) const {$/;"	f	class:monero::monero_tx_query
+copy	wallet/monero_wallet_model.cpp	/^  std::shared_ptr<monero_tx_wallet> monero_tx_wallet::copy(const std::shared_ptr<monero_tx>& src, const std::shared_ptr<monero_tx>& tgt) const {$/;"	f	class:monero::monero_tx_wallet
+copy	wallet/monero_wallet_model.cpp	/^  std::shared_ptr<monero_tx_wallet> monero_tx_wallet::copy(const std::shared_ptr<monero_tx_wallet>& src, const std::shared_ptr<monero_tx_wallet>& tgt) const {$/;"	f	class:monero::monero_tx_wallet
+create_account	wallet/monero_wallet.h	/^    virtual monero_account create_account(const std::string& label = "") {$/;"	f	class:monero::monero_wallet
+create_account	wallet/monero_wallet_full.cpp	/^  monero_account monero_wallet_full::create_account(const std::string& label) {$/;"	f	class:monero::monero_wallet_full
+create_subaddress	wallet/monero_wallet.h	/^    virtual monero_subaddress create_subaddress(uint32_t account_idx, const std::string& label = "") {$/;"	f	class:monero::monero_wallet
+create_subaddress	wallet/monero_wallet_full.cpp	/^  monero_subaddress monero_wallet_full::create_subaddress(const uint32_t account_idx, const std::string& label) {$/;"	f	class:monero::monero_wallet_full
+create_tx	wallet/monero_wallet.h	/^    virtual std::shared_ptr<monero_tx_wallet> create_tx(const monero_tx_config& config) {$/;"	f	class:monero::monero_wallet
+create_txs	wallet/monero_wallet.h	/^    virtual std::vector<std::shared_ptr<monero_tx_wallet>> create_txs(const monero_tx_config& config) {$/;"	f	class:monero::monero_wallet
+create_txs	wallet/monero_wallet_full.cpp	/^  std::vector<std::shared_ptr<monero_tx_wallet>> monero_wallet_full::create_txs(const monero_tx_config& config) {$/;"	f	class:monero::monero_wallet_full
+create_wallet_from_keys	wallet/monero_wallet_full.cpp	/^  monero_wallet_full* monero_wallet_full::create_wallet_from_keys(const std::string& path, const std::string& password, const monero_network_type network_type, const std::string& address, const std::string& view_key, const std::string& spend_key, const monero_rpc_connection& daemon_connection, uint64_t restore_height, const std::string& language, std::unique_ptr<epee::net_utils::http::http_client_factory> http_client_factory) {$/;"	f	class:monero::monero_wallet_full
+create_wallet_from_keys	wallet/monero_wallet_keys.cpp	/^  monero_wallet_keys* monero_wallet_keys::create_wallet_from_keys(const monero_network_type network_type, const std::string& address, const std::string& view_key, const std::string& spend_key, const std::string& language) {$/;"	f	class:monero::monero_wallet_keys
+create_wallet_from_mnemonic	wallet/monero_wallet_full.cpp	/^  monero_wallet_full* monero_wallet_full::create_wallet_from_mnemonic(const std::string& path, const std::string& password, const monero_network_type network_type, const std::string& mnemonic, const monero_rpc_connection& daemon_connection, uint64_t restore_height, const std::string& seed_offset, std::unique_ptr<epee::net_utils::http::http_client_factory> http_client_factory) {$/;"	f	class:monero::monero_wallet_full
+create_wallet_from_mnemonic	wallet/monero_wallet_keys.cpp	/^  monero_wallet_keys* monero_wallet_keys::create_wallet_from_mnemonic(const monero_network_type network_type, const std::string& mnemonic, const std::string& seed_offset) {$/;"	f	class:monero::monero_wallet_keys
+create_wallet_random	wallet/monero_wallet_full.cpp	/^  monero_wallet_full* monero_wallet_full::create_wallet_random(const std::string& path, const std::string& password, const monero_network_type network_type, const monero_rpc_connection& daemon_connection, const std::string& language, std::unique_ptr<epee::net_utils::http::http_client_factory> http_client_factory) {$/;"	f	class:monero::monero_wallet_full
+create_wallet_random	wallet/monero_wallet_keys.cpp	/^  monero_wallet_keys* monero_wallet_keys::create_wallet_random(const monero_network_type network_type, const std::string& language) {$/;"	f	class:monero::monero_wallet_keys
+decode_integrated_address	wallet/monero_wallet.h	/^    virtual monero_integrated_address decode_integrated_address(const std::string& integrated_address) const {$/;"	f	class:monero::monero_wallet
+decode_integrated_address	wallet/monero_wallet_full.cpp	/^  monero_integrated_address monero_wallet_full::decode_integrated_address(const std::string& integrated_address) const {$/;"	f	class:monero::monero_wallet_full
+decode_integrated_address	wallet/monero_wallet_keys.cpp	/^  monero_integrated_address monero_wallet_keys::decode_integrated_address(const std::string& integrated_address) const {$/;"	f	class:monero::monero_wallet_keys
+decontextualize	wallet/monero_wallet_full.cpp	/^  std::shared_ptr<monero_tx_query> decontextualize(std::shared_ptr<monero_tx_query> query) {$/;"	f	namespace:monero
+delete_address_book_entry	wallet/monero_wallet.h	/^    virtual void delete_address_book_entry(uint64_t index) {$/;"	f	class:monero::monero_wallet
+delete_address_book_entry	wallet/monero_wallet_full.cpp	/^  void monero_wallet_full::delete_address_book_entry(uint64_t index) {$/;"	f	class:monero::monero_wallet_full
+describe_tx_set	wallet/monero_wallet.h	/^    virtual monero_tx_set describe_tx_set(const monero_tx_set& tx_set) {$/;"	f	class:monero::monero_wallet
+describe_tx_set	wallet/monero_wallet_full.cpp	/^  monero_tx_set monero_wallet_full::describe_tx_set(const monero_tx_set& tx_set) {$/;"	f	class:monero::monero_wallet_full
+deserialize	utils/monero_utils.cpp	/^void monero_utils::deserialize(const std::string& json, boost::property_tree::ptree& root) {$/;"	f	class:monero_utils
+deserialize	wallet/monero_wallet_model.cpp	/^  monero_tx_set monero_tx_set::deserialize(const std::string& tx_set_json) {$/;"	f	class:monero::monero_tx_set
+deserialize	wallet/monero_wallet_model.cpp	/^  std::shared_ptr<monero_tx_config> monero_tx_config::deserialize(const std::string& config_json) {$/;"	f	class:monero::monero_tx_config
+deserialize_from_block	wallet/monero_wallet_model.cpp	/^  std::shared_ptr<monero_output_query> monero_output_query::deserialize_from_block(const std::string& output_query_json) {$/;"	f	class:monero::monero_output_query
+deserialize_from_block	wallet/monero_wallet_model.cpp	/^  std::shared_ptr<monero_transfer_query> monero_transfer_query::deserialize_from_block(const std::string& transfer_query_json) {$/;"	f	class:monero::monero_transfer_query
+deserialize_from_block	wallet/monero_wallet_model.cpp	/^  std::shared_ptr<monero_tx_query> monero_tx_query::deserialize_from_block(const std::string& tx_query_json) {$/;"	f	class:monero::monero_tx_query
+deserialize_key_images	daemon/monero_daemon_model.cpp	/^  std::vector<std::shared_ptr<monero_key_image>> monero_key_image::deserialize_key_images(const std::string& key_images_json) {$/;"	f	class:monero::monero_key_image
+edit_address_book_entry	wallet/monero_wallet.h	/^    virtual void edit_address_book_entry(uint64_t index, bool set_address, const std::string& address, bool set_description, const std::string& description) {$/;"	f	class:monero::monero_wallet
+edit_address_book_entry	wallet/monero_wallet_full.cpp	/^  void monero_wallet_full::edit_address_book_entry(uint64_t index, bool set_address, const std::string& address, bool set_description, const std::string& description) {$/;"	f	class:monero::monero_wallet_full
+exchange_multisig_keys	wallet/monero_wallet.h	/^    virtual monero_multisig_init_result exchange_multisig_keys(const std::vector<std::string>& mutisig_hexes, const std::string& password) {$/;"	f	class:monero::monero_wallet
+exchange_multisig_keys	wallet/monero_wallet_full.cpp	/^  monero_multisig_init_result monero_wallet_full::exchange_multisig_keys(const std::vector<std::string>& multisig_hexes, const std::string& password) {$/;"	f	class:monero::monero_wallet_full
+export_key_images	wallet/monero_wallet.h	/^    virtual std::vector<std::shared_ptr<monero_key_image>> export_key_images(bool all = false) const {$/;"	f	class:monero::monero_wallet
+export_key_images	wallet/monero_wallet_full.cpp	/^  std::vector<std::shared_ptr<monero_key_image>> monero_wallet_full::export_key_images(bool all) const {$/;"	f	class:monero::monero_wallet_full
+export_multisig_hex	wallet/monero_wallet.h	/^    virtual std::string export_multisig_hex() {$/;"	f	class:monero::monero_wallet
+export_multisig_hex	wallet/monero_wallet_full.cpp	/^  std::string monero_wallet_full::export_multisig_hex() {$/;"	f	class:monero::monero_wallet_full
+export_outputs	wallet/monero_wallet.h	/^    virtual std::string export_outputs(bool all = false, bool complete = false) const {$/;"	f	class:monero::monero_wallet
+export_outputs	wallet/monero_wallet_full.cpp	/^  std::string monero_wallet_full::export_outputs(bool all, bool complete) const {$/;"	f	class:monero::monero_wallet_full
+fill	wallet/monero_wallet_full.cpp	/^  static bool fill(T &where, V s)$/;"	f	namespace:monero
+fill	wallet/monero_wallet_full.cpp	/^  static bool fill(std::list<T> &where, V s)$/;"	f	namespace:monero
+fill_response	wallet/monero_wallet_full.cpp	/^  bool fill_response(wallet2* m_w2, std::vector<tools::wallet2::pending_tx> &ptx_vector,$/;"	f	namespace:monero
+filter_outputs_wallet	wallet/monero_wallet_model.cpp	/^  std::vector<std::shared_ptr<monero_output_wallet>> monero_tx_wallet::filter_outputs_wallet(const monero_output_query& query) {$/;"	f	class:monero::monero_tx_wallet
+filter_transfers	wallet/monero_wallet_model.cpp	/^  std::vector<std::shared_ptr<monero_transfer>> monero_tx_wallet::filter_transfers(const monero_transfer_query& query) {$/;"	f	class:monero::monero_tx_wallet
+free	utils/monero_utils.h	/^  static void free(std::shared_ptr<monero_block> block) {$/;"	f	namespace:monero_utils
+free	utils/monero_utils.h	/^  static void free(std::vector<std::shared_ptr<monero_block>> blocks) {$/;"	f	namespace:monero_utils
+freeze_output	wallet/monero_wallet.h	/^    virtual void freeze_output(const std::string& key_image) {$/;"	f	class:monero::monero_wallet
+freeze_output	wallet/monero_wallet_full.cpp	/^  void monero_wallet_full::freeze_output(const std::string& key_image) {$/;"	f	class:monero::monero_wallet_full
+from_property_tree	daemon/monero_daemon_model.cpp	/^  void monero_key_image::from_property_tree(const boost::property_tree::ptree& node, const std::shared_ptr<monero_key_image>& key_image) {$/;"	f	class:monero::monero_key_image
+from_property_tree	daemon/monero_daemon_model.cpp	/^  void monero_output::from_property_tree(const boost::property_tree::ptree& node, const std::shared_ptr<monero_output>& output) {$/;"	f	class:monero::monero_output
+from_property_tree	daemon/monero_daemon_model.cpp	/^  void monero_tx::from_property_tree(const boost::property_tree::ptree& node, std::shared_ptr<monero_tx> tx) {$/;"	f	class:monero::monero_tx
+from_property_tree	wallet/monero_wallet_model.cpp	/^  void monero_destination::from_property_tree(const boost::property_tree::ptree& node, const std::shared_ptr<monero_destination>& destination) {$/;"	f	class:monero::monero_destination
+from_property_tree	wallet/monero_wallet_model.cpp	/^  void monero_output_query::from_property_tree(const boost::property_tree::ptree& node, const std::shared_ptr<monero_output_query>& output_query) {$/;"	f	class:monero::monero_output_query
+from_property_tree	wallet/monero_wallet_model.cpp	/^  void monero_output_wallet::from_property_tree(const boost::property_tree::ptree& node, const std::shared_ptr<monero_output_wallet>& output_wallet) {$/;"	f	class:monero::monero_output_wallet
+from_property_tree	wallet/monero_wallet_model.cpp	/^  void monero_transfer::from_property_tree(const boost::property_tree::ptree& node, const std::shared_ptr<monero_transfer>& transfer) {$/;"	f	class:monero::monero_transfer
+from_property_tree	wallet/monero_wallet_model.cpp	/^  void monero_transfer_query::from_property_tree(const boost::property_tree::ptree& node, const std::shared_ptr<monero_transfer_query>& transfer_query) {$/;"	f	class:monero::monero_transfer_query
+from_property_tree	wallet/monero_wallet_model.cpp	/^  void monero_tx_query::from_property_tree(const boost::property_tree::ptree& node, const std::shared_ptr<monero_tx_query>& tx_query) {$/;"	f	class:monero::monero_tx_query
+from_property_tree	wallet/monero_wallet_model.cpp	/^  void monero_tx_wallet::from_property_tree(const boost::property_tree::ptree& node, const std::shared_ptr<monero_tx_wallet>& tx_wallet) {$/;"	f	class:monero::monero_tx_wallet
+gen_utils	utils/gen_utils.h	/^namespace gen_utils$/;"	n
+gen_utils_h	utils/gen_utils.h	55;"	d
+get_account	wallet/monero_wallet.h	/^    virtual monero_account get_account(const uint32_t account_idx, bool include_subaddresses) const {$/;"	f	class:monero::monero_wallet
+get_account	wallet/monero_wallet.h	/^    virtual monero_account get_account(uint32_t account_idx) const {$/;"	f	class:monero::monero_wallet
+get_account	wallet/monero_wallet_full.cpp	/^  monero_account monero_wallet_full::get_account(uint32_t account_idx, bool include_subaddresses) const {$/;"	f	class:monero::monero_wallet_full
+get_account	wallet/monero_wallet_keys.cpp	/^  monero_account monero_wallet_keys::get_account(uint32_t account_idx, bool include_subaddresses) const {$/;"	f	class:monero::monero_wallet_keys
+get_accounts	wallet/monero_wallet.h	/^    virtual std::vector<monero_account> get_accounts() const {$/;"	f	class:monero::monero_wallet
+get_accounts	wallet/monero_wallet.h	/^    virtual std::vector<monero_account> get_accounts(bool include_subaddresses) const {$/;"	f	class:monero::monero_wallet
+get_accounts	wallet/monero_wallet.h	/^    virtual std::vector<monero_account> get_accounts(bool include_subaddresses, const std::string& tag) const {$/;"	f	class:monero::monero_wallet
+get_accounts	wallet/monero_wallet.h	/^    virtual std::vector<monero_account> get_accounts(const std::string& tag) const {$/;"	f	class:monero::monero_wallet
+get_accounts	wallet/monero_wallet_full.cpp	/^  std::vector<monero_account> monero_wallet_full::get_accounts(bool include_subaddresses, const std::string& tag) const {$/;"	f	class:monero::monero_wallet_full
+get_address	wallet/monero_wallet.h	/^    virtual std::string get_address(const uint32_t account_idx, const uint32_t subaddress_idx) const {$/;"	f	class:monero::monero_wallet
+get_address	wallet/monero_wallet_full.cpp	/^  std::string monero_wallet_full::get_address(uint32_t account_idx, uint32_t subaddress_idx) const {$/;"	f	class:monero::monero_wallet_full
+get_address	wallet/monero_wallet_keys.cpp	/^  std::string monero_wallet_keys::get_address(uint32_t account_idx, uint32_t subaddress_idx) const {$/;"	f	class:monero::monero_wallet_keys
+get_address_book_entries	wallet/monero_wallet.h	/^    virtual std::vector<monero_address_book_entry> get_address_book_entries(const std::vector<uint64_t>& indices) const {$/;"	f	class:monero::monero_wallet
+get_address_book_entries	wallet/monero_wallet_full.cpp	/^  std::vector<monero_address_book_entry> monero_wallet_full::get_address_book_entries(const std::vector<uint64_t>& indices) const {$/;"	f	class:monero::monero_wallet_full
+get_address_index	wallet/monero_wallet.h	/^    virtual monero_subaddress get_address_index(const std::string& address) const {$/;"	f	class:monero::monero_wallet
+get_address_index	wallet/monero_wallet_full.cpp	/^  monero_subaddress monero_wallet_full::get_address_index(const std::string& address) const {$/;"	f	class:monero::monero_wallet_full
+get_attribute	wallet/monero_wallet.h	/^    virtual bool get_attribute(const std::string& key, std::string& value) const {$/;"	f	class:monero::monero_wallet
+get_attribute	wallet/monero_wallet_full.cpp	/^  bool monero_wallet_full::get_attribute(const std::string& key, std::string& value) const {$/;"	f	class:monero::monero_wallet_full
+get_balance	wallet/monero_wallet.h	/^    virtual uint64_t get_balance() const {$/;"	f	class:monero::monero_wallet
+get_balance	wallet/monero_wallet.h	/^    virtual uint64_t get_balance(uint32_t account_idx) const {$/;"	f	class:monero::monero_wallet
+get_balance	wallet/monero_wallet.h	/^    virtual uint64_t get_balance(uint32_t account_idx, uint32_t subaddress_idx) const {$/;"	f	class:monero::monero_wallet
+get_balance	wallet/monero_wallet_full.cpp	/^  uint64_t monero_wallet_full::get_balance() const {$/;"	f	class:monero::monero_wallet_full
+get_balance	wallet/monero_wallet_full.cpp	/^  uint64_t monero_wallet_full::get_balance(uint32_t account_idx) const {$/;"	f	class:monero::monero_wallet_full
+get_balance	wallet/monero_wallet_full.cpp	/^  uint64_t monero_wallet_full::get_balance(uint32_t account_idx, uint32_t subaddress_idx) const {$/;"	f	class:monero::monero_wallet_full
+get_cache_file_buffer	wallet/monero_wallet_full.cpp	/^  std::string monero_wallet_full::get_cache_file_buffer(const epee::wipeable_string& password) const {$/;"	f	class:monero::monero_wallet_full
+get_daemon_connection	wallet/monero_wallet.h	/^    virtual boost::optional<monero_rpc_connection> get_daemon_connection() const {$/;"	f	class:monero::monero_wallet
+get_daemon_connection	wallet/monero_wallet_full.cpp	/^  boost::optional<monero_rpc_connection> monero_wallet_full::get_daemon_connection() const {$/;"	f	class:monero::monero_wallet_full
+get_daemon_height	wallet/monero_wallet.h	/^    virtual uint64_t get_daemon_height() const {$/;"	f	class:monero::monero_wallet
+get_daemon_height	wallet/monero_wallet_full.cpp	/^  uint64_t monero_wallet_full::get_daemon_height() const {$/;"	f	class:monero::monero_wallet_full
+get_daemon_max_peer_height	wallet/monero_wallet.h	/^    virtual uint64_t get_daemon_max_peer_height() const {$/;"	f	class:monero::monero_wallet
+get_daemon_max_peer_height	wallet/monero_wallet_full.cpp	/^  uint64_t monero_wallet_full::get_daemon_max_peer_height() const {$/;"	f	class:monero::monero_wallet_full
+get_default_ringdb_path	wallet/monero_wallet_full.cpp	/^  std::string get_default_ringdb_path(cryptonote::network_type nettype)$/;"	f	namespace:monero
+get_height	daemon/monero_daemon_model.cpp	/^  boost::optional<uint64_t> monero_tx::get_height() const {$/;"	f	class:monero::monero_tx
+get_height	wallet/monero_wallet.h	/^    virtual uint64_t get_height() const {$/;"	f	class:monero::monero_wallet
+get_height	wallet/monero_wallet_full.cpp	/^  uint64_t monero_wallet_full::get_height() const {$/;"	f	class:monero::monero_wallet_full
+get_height_by_date	wallet/monero_wallet.h	/^    virtual uint64_t get_height_by_date(uint16_t year, uint8_t month, uint8_t day) const {$/;"	f	class:monero::monero_wallet
+get_height_by_date	wallet/monero_wallet_full.cpp	/^  uint64_t monero_wallet_full::get_height_by_date(uint16_t year, uint8_t month, uint8_t day) const {$/;"	f	class:monero::monero_wallet_full
+get_integrated_address	utils/monero_utils.cpp	/^monero_integrated_address monero_utils::get_integrated_address(monero_network_type network_type, const std::string& standard_address, const std::string& payment_id) {$/;"	f	class:monero_utils
+get_integrated_address	wallet/monero_wallet.h	/^    virtual monero_integrated_address get_integrated_address(const std::string& standard_address = "", const std::string& payment_id = "") const {$/;"	f	class:monero::monero_wallet
+get_integrated_address	wallet/monero_wallet_full.cpp	/^  monero_integrated_address monero_wallet_full::get_integrated_address(const std::string& standard_address, const std::string& payment_id) const {$/;"	f	class:monero::monero_wallet_full
+get_integrated_address	wallet/monero_wallet_keys.cpp	/^  monero_integrated_address monero_wallet_keys::get_integrated_address(const std::string& standard_address, const std::string& payment_id) const {$/;"	f	class:monero::monero_wallet_keys
+get_keys_file_buffer	wallet/monero_wallet_full.cpp	/^  std::string monero_wallet_full::get_keys_file_buffer(const epee::wipeable_string& password, bool view_only) const {$/;"	f	class:monero::monero_wallet_full
+get_listeners	wallet/monero_wallet.h	/^    virtual std::set<monero_wallet_listener*> get_listeners() {$/;"	f	class:monero::monero_wallet
+get_listeners	wallet/monero_wallet_full.cpp	/^  std::set<monero_wallet_listener*> monero_wallet_full::get_listeners() {$/;"	f	class:monero::monero_wallet_full
+get_mnemonic	wallet/monero_wallet.h	/^    virtual std::string get_mnemonic() const {$/;"	f	class:monero::monero_wallet
+get_mnemonic	wallet/monero_wallet_full.cpp	/^  std::string monero_wallet_full::get_mnemonic() const {$/;"	f	class:monero::monero_wallet_full
+get_mnemonic_language	wallet/monero_wallet.h	/^    virtual std::string get_mnemonic_language() const {$/;"	f	class:monero::monero_wallet
+get_mnemonic_language	wallet/monero_wallet_full.cpp	/^  std::string monero_wallet_full::get_mnemonic_language() const {$/;"	f	class:monero::monero_wallet_full
+get_mnemonic_languages	wallet/monero_wallet_full.cpp	/^  std::vector<std::string> monero_wallet_full::get_mnemonic_languages() {$/;"	f	class:monero::monero_wallet_full
+get_mnemonic_languages	wallet/monero_wallet_keys.cpp	/^  std::vector<std::string> monero_wallet_keys::get_mnemonic_languages() {$/;"	f	class:monero::monero_wallet_keys
+get_multisig_info	wallet/monero_wallet.h	/^    virtual monero_multisig_info get_multisig_info() const {$/;"	f	class:monero::monero_wallet
+get_multisig_info	wallet/monero_wallet_full.cpp	/^  monero_multisig_info monero_wallet_full::get_multisig_info() const {$/;"	f	class:monero::monero_wallet_full
+get_multisig_seed	wallet/monero_wallet.h	/^    virtual std::string get_multisig_seed(const std::string& seed_pass) {$/;"	f	class:monero::monero_wallet
+get_multisig_seed	wallet/monero_wallet_full.cpp	/^  std::string monero_wallet_full::get_multisig_seed(const std::string& seed_pass) {$/;"	f	class:monero::monero_wallet_full
+get_network_type	wallet/monero_wallet.h	/^    virtual monero_network_type get_network_type() const {$/;"	f	class:monero::monero_wallet
+get_network_type	wallet/monero_wallet_full.cpp	/^  monero_network_type monero_wallet_full::get_network_type() const {$/;"	f	class:monero::monero_wallet_full
+get_normalized_destinations	wallet/monero_wallet_model.cpp	/^  std::vector<std::shared_ptr<monero_destination>> monero_tx_config::get_normalized_destinations() const {$/;"	f	class:monero::monero_tx_config
+get_outputs	wallet/monero_wallet.h	/^    virtual std::vector<std::shared_ptr<monero_output_wallet>> get_outputs(const monero_output_query& query) const {$/;"	f	class:monero::monero_wallet
+get_outputs	wallet/monero_wallet_full.cpp	/^  std::vector<std::shared_ptr<monero_output_wallet>> monero_wallet_full::get_outputs(const monero_output_query& query) const {$/;"	f	class:monero::monero_wallet_full
+get_outputs_aux	wallet/monero_wallet_full.cpp	/^  std::vector<std::shared_ptr<monero_output_wallet>> monero_wallet_full::get_outputs_aux(const monero_output_query& query) const {$/;"	f	class:monero::monero_wallet_full
+get_outputs_wallet	wallet/monero_wallet_model.cpp	/^  std::vector<std::shared_ptr<monero_output_wallet>> monero_tx_wallet::get_outputs_wallet() const {$/;"	f	class:monero::monero_tx_wallet
+get_outputs_wallet	wallet/monero_wallet_model.cpp	/^  std::vector<std::shared_ptr<monero_output_wallet>> monero_tx_wallet::get_outputs_wallet(const monero_output_query& query) const {$/;"	f	class:monero::monero_tx_wallet
+get_path	wallet/monero_wallet.h	/^    virtual std::string get_path() const {$/;"	f	class:monero::monero_wallet
+get_path	wallet/monero_wallet_full.cpp	/^  std::string monero_wallet_full::get_path() const {$/;"	f	class:monero::monero_wallet_full
+get_payment_uri	wallet/monero_wallet.h	/^    virtual std::string get_payment_uri(const monero_tx_config& config) const {$/;"	f	class:monero::monero_wallet
+get_payment_uri	wallet/monero_wallet_full.cpp	/^  std::string monero_wallet_full::get_payment_uri(const monero_tx_config& config) const {$/;"	f	class:monero::monero_wallet_full
+get_primary_address	wallet/monero_wallet.h	/^    virtual std::string get_primary_address() const {$/;"	f	class:monero::monero_wallet
+get_private_spend_key	wallet/monero_wallet.h	/^    virtual std::string get_private_spend_key() const {$/;"	f	class:monero::monero_wallet
+get_private_spend_key	wallet/monero_wallet_full.cpp	/^  std::string monero_wallet_full::get_private_spend_key() const {$/;"	f	class:monero::monero_wallet_full
+get_private_view_key	wallet/monero_wallet.h	/^    virtual std::string get_private_view_key() const {$/;"	f	class:monero::monero_wallet
+get_private_view_key	wallet/monero_wallet_full.cpp	/^  std::string monero_wallet_full::get_private_view_key() const {$/;"	f	class:monero::monero_wallet_full
+get_pruned_tx_json	utils/monero_utils.h	/^  static std::string get_pruned_tx_json(cryptonote::transaction &tx)$/;"	f	namespace:monero_utils
+get_public_spend_key	wallet/monero_wallet.h	/^    virtual std::string get_public_spend_key() const {$/;"	f	class:monero::monero_wallet
+get_public_spend_key	wallet/monero_wallet_full.cpp	/^  std::string monero_wallet_full::get_public_spend_key() const {$/;"	f	class:monero::monero_wallet_full
+get_public_view_key	wallet/monero_wallet.h	/^    virtual std::string get_public_view_key() const {$/;"	f	class:monero::monero_wallet
+get_public_view_key	wallet/monero_wallet_full.cpp	/^  std::string monero_wallet_full::get_public_view_key() const {$/;"	f	class:monero::monero_wallet_full
+get_reserve_proof_account	wallet/monero_wallet.h	/^    virtual std::string get_reserve_proof_account(uint32_t account_idx, uint64_t amount, const std::string& message) const {$/;"	f	class:monero::monero_wallet
+get_reserve_proof_account	wallet/monero_wallet_full.cpp	/^  std::string monero_wallet_full::get_reserve_proof_account(uint32_t account_idx, uint64_t amount, const std::string& message) const {$/;"	f	class:monero::monero_wallet_full
+get_reserve_proof_wallet	wallet/monero_wallet.h	/^    virtual std::string get_reserve_proof_wallet(const std::string& message) const {$/;"	f	class:monero::monero_wallet
+get_reserve_proof_wallet	wallet/monero_wallet_full.cpp	/^  std::string monero_wallet_full::get_reserve_proof_wallet(const std::string& message) const {$/;"	f	class:monero::monero_wallet_full
+get_spend_proof	wallet/monero_wallet.h	/^    virtual std::string get_spend_proof(const std::string& tx_hash, const std::string& message) const {$/;"	f	class:monero::monero_wallet
+get_spend_proof	wallet/monero_wallet_full.cpp	/^  std::string monero_wallet_full::get_spend_proof(const std::string& tx_hash, const std::string& message) const {$/;"	f	class:monero::monero_wallet_full
+get_subaddress	wallet/monero_wallet.h	/^    virtual monero_subaddress get_subaddress(const uint32_t account_idx, const uint32_t subaddress_idx) const {$/;"	f	class:monero::monero_wallet
+get_subaddresses	wallet/monero_wallet.h	/^    virtual std::vector<monero_subaddress> get_subaddresses(const uint32_t account_idx) const {$/;"	f	class:monero::monero_wallet
+get_subaddresses	wallet/monero_wallet.h	/^    virtual std::vector<monero_subaddress> get_subaddresses(const uint32_t account_idx, const std::vector<uint32_t>& subaddress_indices) const {$/;"	f	class:monero::monero_wallet
+get_subaddresses	wallet/monero_wallet_full.cpp	/^  std::vector<monero_subaddress> monero_wallet_full::get_subaddresses(const uint32_t account_idx, const std::vector<uint32_t>& subaddress_indices) const {$/;"	f	class:monero::monero_wallet_full
+get_subaddresses	wallet/monero_wallet_keys.cpp	/^  std::vector<monero_subaddress> monero_wallet_keys::get_subaddresses(const uint32_t account_idx, const std::vector<uint32_t>& subaddress_indices) const {$/;"	f	class:monero::monero_wallet_keys
+get_subaddresses_aux	wallet/monero_wallet_full.cpp	/^  std::vector<monero_subaddress> monero_wallet_full::get_subaddresses_aux(const uint32_t account_idx, const std::vector<uint32_t>& subaddress_indices, const std::vector<tools::wallet2::transfer_details>& transfers) const {$/;"	f	class:monero::monero_wallet_full
+get_sync_height	wallet/monero_wallet.h	/^    virtual uint64_t get_sync_height() const {$/;"	f	class:monero::monero_wallet
+get_sync_height	wallet/monero_wallet_full.cpp	/^  uint64_t monero_wallet_full::get_sync_height() const {  \/\/ TODO: rename to get_sync_from_height()$/;"	f	class:monero::monero_wallet_full
+get_transfers	wallet/monero_wallet.h	/^    virtual std::vector<std::shared_ptr<monero_transfer>> get_transfers(const monero_transfer_query& query) const {$/;"	f	class:monero::monero_wallet
+get_transfers	wallet/monero_wallet_full.cpp	/^  std::vector<std::shared_ptr<monero_transfer>> monero_wallet_full::get_transfers(const monero_transfer_query& query) const {$/;"	f	class:monero::monero_wallet_full
+get_transfers	wallet/monero_wallet_model.cpp	/^  std::vector<std::shared_ptr<monero_transfer>> monero_tx_wallet::get_transfers() const {$/;"	f	class:monero::monero_tx_wallet
+get_transfers	wallet/monero_wallet_model.cpp	/^  std::vector<std::shared_ptr<monero_transfer>> monero_tx_wallet::get_transfers(const monero_transfer_query& query) const {$/;"	f	class:monero::monero_tx_wallet
+get_transfers_aux	wallet/monero_wallet_full.cpp	/^  std::vector<std::shared_ptr<monero_transfer>> monero_wallet_full::get_transfers_aux(const monero_transfer_query& query) const {$/;"	f	class:monero::monero_wallet_full
+get_tx_key	wallet/monero_wallet.h	/^    virtual std::string get_tx_key(const std::string& tx_hash) const {$/;"	f	class:monero::monero_wallet
+get_tx_key	wallet/monero_wallet_full.cpp	/^  std::string monero_wallet_full::get_tx_key(const std::string& tx_hash) const {$/;"	f	class:monero::monero_wallet_full
+get_tx_note	wallet/monero_wallet.h	/^    virtual std::string get_tx_note(const std::string& tx_hash) const {$/;"	f	class:monero::monero_wallet
+get_tx_note	wallet/monero_wallet_full.cpp	/^  std::string monero_wallet_full::get_tx_note(const std::string& tx_hash) const {$/;"	f	class:monero::monero_wallet_full
+get_tx_notes	wallet/monero_wallet.h	/^    virtual std::vector<std::string> get_tx_notes(const std::vector<std::string>& tx_hashes) const {$/;"	f	class:monero::monero_wallet
+get_tx_notes	wallet/monero_wallet_full.cpp	/^  std::vector<std::string> monero_wallet_full::get_tx_notes(const std::vector<std::string>& tx_hashes) const {$/;"	f	class:monero::monero_wallet_full
+get_tx_proof	wallet/monero_wallet.h	/^    virtual std::string get_tx_proof(const std::string& tx_hash, const std::string& address, const std::string& message) const {$/;"	f	class:monero::monero_wallet
+get_tx_proof	wallet/monero_wallet_full.cpp	/^  std::string monero_wallet_full::get_tx_proof(const std::string& tx_hash, const std::string& address, const std::string& message) const {$/;"	f	class:monero::monero_wallet_full
+get_txs	wallet/monero_wallet.h	/^    virtual std::vector<std::shared_ptr<monero_tx_wallet>> get_txs() const {$/;"	f	class:monero::monero_wallet
+get_txs	wallet/monero_wallet.h	/^    virtual std::vector<std::shared_ptr<monero_tx_wallet>> get_txs(const monero_tx_query& query) const {$/;"	f	class:monero::monero_wallet
+get_txs	wallet/monero_wallet.h	/^    virtual std::vector<std::shared_ptr<monero_tx_wallet>> get_txs(const monero_tx_query& query, std::vector<std::string>& missing_tx_hashes) const {$/;"	f	class:monero::monero_wallet
+get_txs	wallet/monero_wallet_full.cpp	/^  std::vector<std::shared_ptr<monero_tx_wallet>> monero_wallet_full::get_txs() const {$/;"	f	class:monero::monero_wallet_full
+get_txs	wallet/monero_wallet_full.cpp	/^  std::vector<std::shared_ptr<monero_tx_wallet>> monero_wallet_full::get_txs(const monero_tx_query& query) const {$/;"	f	class:monero::monero_wallet_full
+get_txs	wallet/monero_wallet_full.cpp	/^  std::vector<std::shared_ptr<monero_tx_wallet>> monero_wallet_full::get_txs(const monero_tx_query& query, std::vector<std::string>& missing_tx_hashes) const {$/;"	f	class:monero::monero_wallet_full
+get_unlocked_balance	wallet/monero_wallet.h	/^    virtual uint64_t get_unlocked_balance() const {$/;"	f	class:monero::monero_wallet
+get_unlocked_balance	wallet/monero_wallet.h	/^    virtual uint64_t get_unlocked_balance(uint32_t account_idx) const {$/;"	f	class:monero::monero_wallet
+get_unlocked_balance	wallet/monero_wallet.h	/^    virtual uint64_t get_unlocked_balance(uint32_t account_idx, uint32_t subaddress_idx) const {$/;"	f	class:monero::monero_wallet
+get_unlocked_balance	wallet/monero_wallet_full.cpp	/^  uint64_t monero_wallet_full::get_unlocked_balance() const {$/;"	f	class:monero::monero_wallet_full
+get_unlocked_balance	wallet/monero_wallet_full.cpp	/^  uint64_t monero_wallet_full::get_unlocked_balance(uint32_t account_idx) const {$/;"	f	class:monero::monero_wallet_full
+get_unlocked_balance	wallet/monero_wallet_full.cpp	/^  uint64_t monero_wallet_full::get_unlocked_balance(uint32_t account_idx, uint32_t subaddress_idx) const {$/;"	f	class:monero::monero_wallet_full
+get_version	wallet/monero_wallet.h	/^    virtual monero_version get_version() const {$/;"	f	class:monero::monero_wallet
+get_version	wallet/monero_wallet_full.cpp	/^  monero_version monero_wallet_full::get_version() const {$/;"	f	class:monero::monero_wallet_full
+get_version	wallet/monero_wallet_keys.cpp	/^  monero_version monero_wallet_keys::get_version() const {$/;"	f	class:monero::monero_wallet_keys
+import_key_images	wallet/monero_wallet.h	/^    virtual std::shared_ptr<monero_key_image_import_result> import_key_images(const std::vector<std::shared_ptr<monero_key_image>>& key_images) {$/;"	f	class:monero::monero_wallet
+import_key_images	wallet/monero_wallet_full.cpp	/^  std::shared_ptr<monero_key_image_import_result> monero_wallet_full::import_key_images(const std::vector<std::shared_ptr<monero_key_image>>& key_images) {$/;"	f	class:monero::monero_wallet_full
+import_multisig_hex	wallet/monero_wallet.h	/^    virtual int import_multisig_hex(const std::vector<std::string>& multisig_hexes) {$/;"	f	class:monero::monero_wallet
+import_multisig_hex	wallet/monero_wallet_full.cpp	/^  int monero_wallet_full::import_multisig_hex(const std::vector<std::string>& multisig_hexes) {$/;"	f	class:monero::monero_wallet_full
+import_outputs	wallet/monero_wallet.h	/^    virtual int import_outputs(const std::string& outputs_hex) {$/;"	f	class:monero::monero_wallet
+import_outputs	wallet/monero_wallet_full.cpp	/^  int monero_wallet_full::import_outputs(const std::string& outputs_hex) {$/;"	f	class:monero::monero_wallet_full
+incoming_transfer_before	wallet/monero_wallet_full.cpp	/^  bool incoming_transfer_before(const std::shared_ptr<monero_incoming_transfer>& transfer1, const std::shared_ptr<monero_incoming_transfer>& transfer2) {$/;"	f	namespace:monero
+init_common	wallet/monero_wallet_full.cpp	/^  void monero_wallet_full::init_common() {$/;"	f	class:monero::monero_wallet_full
+init_common	wallet/monero_wallet_keys.cpp	/^  void monero_wallet_keys::init_common() {$/;"	f	class:monero::monero_wallet_keys
+is_connected_to_daemon	wallet/monero_wallet.h	/^    virtual bool is_connected_to_daemon() const {$/;"	f	class:monero::monero_wallet
+is_connected_to_daemon	wallet/monero_wallet_full.cpp	/^  bool monero_wallet_full::is_connected_to_daemon() const {$/;"	f	class:monero::monero_wallet_full
+is_contextual	wallet/monero_wallet_full.cpp	/^  bool is_contextual(const monero_output_query& query) {$/;"	f	namespace:monero
+is_contextual	wallet/monero_wallet_full.cpp	/^  bool is_contextual(const monero_transfer_query& query) {$/;"	f	namespace:monero
+is_daemon_synced	wallet/monero_wallet.h	/^    virtual bool is_daemon_synced() const {$/;"	f	class:monero::monero_wallet
+is_daemon_synced	wallet/monero_wallet_full.cpp	/^  bool monero_wallet_full::is_daemon_synced() const {$/;"	f	class:monero::monero_wallet_full
+is_daemon_trusted	wallet/monero_wallet.h	/^    virtual bool is_daemon_trusted() const {$/;"	f	class:monero::monero_wallet
+is_daemon_trusted	wallet/monero_wallet_full.cpp	/^  bool monero_wallet_full::is_daemon_trusted() const {$/;"	f	class:monero::monero_wallet_full
+is_error_value	wallet/monero_wallet_full.cpp	/^  static bool is_error_value(const std::string &s) { return s.empty(); }$/;"	f	namespace:monero
+is_error_value	wallet/monero_wallet_full.cpp	/^  template<typename T> static bool is_error_value(const T &val) { return false; }$/;"	f	namespace:monero
+is_incoming	wallet/monero_wallet_model.cpp	/^  boost::optional<bool> monero_incoming_transfer::is_incoming() const { return true; }$/;"	f	class:monero::monero_incoming_transfer
+is_incoming	wallet/monero_wallet_model.cpp	/^  boost::optional<bool> monero_outgoing_transfer::is_incoming() const { return false; }$/;"	f	class:monero::monero_outgoing_transfer
+is_incoming	wallet/monero_wallet_model.cpp	/^  boost::optional<bool> monero_transfer_query::is_incoming() const { return m_is_incoming; }$/;"	f	class:monero::monero_transfer_query
+is_multisig	wallet/monero_wallet.h	/^    virtual bool is_multisig() const {$/;"	f	class:monero::monero_wallet
+is_multisig_import_needed	wallet/monero_wallet.h	/^    virtual bool is_multisig_import_needed() const {$/;"	f	class:monero::monero_wallet
+is_multisig_import_needed	wallet/monero_wallet_full.cpp	/^  bool monero_wallet_full::is_multisig_import_needed() const {$/;"	f	class:monero::monero_wallet_full
+is_outgoing	wallet/monero_wallet_model.h	/^    boost::optional<bool> is_outgoing() const {$/;"	f	struct:monero::monero_transfer
+is_output_frozen	wallet/monero_wallet.h	/^    virtual bool is_output_frozen(const std::string& key_image) {$/;"	f	class:monero::monero_wallet
+is_output_frozen	wallet/monero_wallet_full.cpp	/^  bool monero_wallet_full::is_output_frozen(const std::string& key_image) {$/;"	f	class:monero::monero_wallet_full
+is_synced	wallet/monero_wallet.h	/^    virtual bool is_synced() const {$/;"	f	class:monero::monero_wallet
+is_synced	wallet/monero_wallet_full.cpp	/^  bool monero_wallet_full::is_synced() const {$/;"	f	class:monero::monero_wallet_full
+is_valid_address	utils/monero_utils.cpp	/^bool monero_utils::is_valid_address(const std::string& address, monero_network_type network_type) {$/;"	f	class:monero_utils
+is_valid_language	utils/monero_utils.cpp	/^bool monero_utils::is_valid_language(const std::string& language) {$/;"	f	class:monero_utils
+is_valid_private_spend_key	utils/monero_utils.cpp	/^bool monero_utils::is_valid_private_spend_key(const std::string& private_spend_key) {$/;"	f	class:monero_utils
+is_valid_private_view_key	utils/monero_utils.cpp	/^bool monero_utils::is_valid_private_view_key(const std::string& private_view_key) {$/;"	f	class:monero_utils
+is_view_only	wallet/monero_wallet.h	/^    virtual bool is_view_only() const {$/;"	f	class:monero::monero_wallet
+json_to_binary	utils/monero_utils.cpp	/^void monero_utils::json_to_binary(const std::string &json, std::string &bin) {$/;"	f	class:monero_utils
+key_image_list	wallet/monero_wallet_full.cpp	/^  struct key_image_list$/;"	s	namespace:monero	file:
+key_images	wallet/monero_wallet_full.cpp	/^    std::list<std::string> key_images;$/;"	m	struct:monero::key_image_list	file:
+load_multisig_tx	wallet/monero_wallet.h	/^    virtual monero_tx_config load_multisig_tx(const std::string& multisig_tx_hex) {$/;"	f	class:monero::monero_wallet
+load_multisig_tx	wallet/monero_wallet_full.cpp	/^  monero_tx_config monero_wallet_full::load_multisig_tx(const std::string& multisig_tx_hex) {$/;"	f	class:monero::monero_wallet_full
+lock_and_sync	wallet/monero_wallet_full.cpp	/^  monero_sync_result monero_wallet_full::lock_and_sync(boost::optional<uint64_t> start_height) {$/;"	f	class:monero::monero_wallet_full
+m_account	wallet/monero_wallet_keys.h	/^    cryptonote::account_base m_account;$/;"	m	class:monero::monero_wallet_keys
+m_account_index	wallet/monero_wallet_model.h	/^    boost::optional<uint32_t> m_account_index;$/;"	m	struct:monero::monero_output_wallet
+m_account_index	wallet/monero_wallet_model.h	/^    boost::optional<uint32_t> m_account_index;$/;"	m	struct:monero::monero_subaddress
+m_account_index	wallet/monero_wallet_model.h	/^    boost::optional<uint32_t> m_account_index;$/;"	m	struct:monero::monero_transfer
+m_account_index	wallet/monero_wallet_model.h	/^    boost::optional<uint32_t> m_account_index;$/;"	m	struct:monero::monero_tx_config
+m_address	wallet/monero_wallet_model.h	/^    boost::optional<std::string> m_address;$/;"	m	struct:monero::monero_address_book_entry
+m_address	wallet/monero_wallet_model.h	/^    boost::optional<std::string> m_address;$/;"	m	struct:monero::monero_destination
+m_address	wallet/monero_wallet_model.h	/^    boost::optional<std::string> m_address;$/;"	m	struct:monero::monero_incoming_transfer
+m_address	wallet/monero_wallet_model.h	/^    boost::optional<std::string> m_address;$/;"	m	struct:monero::monero_multisig_init_result
+m_address	wallet/monero_wallet_model.h	/^    boost::optional<std::string> m_address;$/;"	m	struct:monero::monero_subaddress
+m_address	wallet/monero_wallet_model.h	/^    boost::optional<std::string> m_address;$/;"	m	struct:monero::monero_transfer_query
+m_address	wallet/monero_wallet_model.h	/^    boost::optional<std::string> m_address;$/;"	m	struct:monero::monero_tx_config
+m_addresses	wallet/monero_wallet_model.h	/^    std::vector<std::string> m_addresses;$/;"	m	struct:monero::monero_outgoing_transfer
+m_addresses	wallet/monero_wallet_model.h	/^    std::vector<std::string> m_addresses;$/;"	m	struct:monero::monero_transfer_query
+m_amount	daemon/monero_daemon_model.h	/^    boost::optional<uint64_t> m_amount;$/;"	m	struct:monero::monero_output
+m_amount	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_amount;$/;"	m	struct:monero::monero_destination
+m_amount	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_amount;$/;"	m	struct:monero::monero_transfer
+m_amount	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_amount;$/;"	m	struct:monero::monero_tx_config
+m_balance	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_balance;$/;"	m	struct:monero::monero_account
+m_balance	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_balance;$/;"	m	struct:monero::monero_subaddress
+m_below_amount	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_below_amount;$/;"	m	struct:monero::monero_tx_config
+m_block	daemon/monero_daemon_model.h	/^    boost::optional<std::shared_ptr<monero_block>> m_block;$/;"	m	struct:monero::monero_tx
+m_can_split	wallet/monero_wallet_model.h	/^    boost::optional<bool> m_can_split;$/;"	m	struct:monero::monero_tx_config
+m_change_address	wallet/monero_wallet_model.h	/^    boost::optional<std::string> m_change_address;$/;"	m	struct:monero::monero_tx_wallet
+m_change_amount	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_change_amount;$/;"	m	struct:monero::monero_tx_wallet
+m_common_tx_sets	daemon/monero_daemon_model.h	/^    boost::optional<std::string> m_common_tx_sets;$/;"	m	struct:monero::monero_tx
+m_cumulative_difficulty	daemon/monero_daemon_model.h	/^    boost::optional<uint64_t> m_cumulative_difficulty;$/;"	m	struct:monero::monero_block_header
+m_depth	daemon/monero_daemon_model.h	/^    boost::optional<uint64_t> m_depth;$/;"	m	struct:monero::monero_block_header
+m_description	wallet/monero_wallet_model.h	/^    boost::optional<std::string> m_description;$/;"	m	struct:monero::monero_address_book_entry
+m_destinations	utils/monero_utils.h	/^    const std::vector<monero::monero_destination> m_destinations;$/;"	m	class:monero_utils::MoneroDestinationValidator
+m_destinations	wallet/monero_wallet_model.h	/^    std::vector<std::shared_ptr<monero_destination>> m_destinations;$/;"	m	struct:monero::monero_outgoing_transfer
+m_destinations	wallet/monero_wallet_model.h	/^    std::vector<std::shared_ptr<monero_destination>> m_destinations;$/;"	m	struct:monero::monero_transfer_query
+m_destinations	wallet/monero_wallet_model.h	/^    std::vector<std::shared_ptr<monero_destination>> m_destinations;$/;"	m	struct:monero::monero_tx_config
+m_difficulty	daemon/monero_daemon_model.h	/^    boost::optional<uint64_t> m_difficulty;$/;"	m	struct:monero::monero_block_header
+m_extra	daemon/monero_daemon_model.h	/^    std::vector<uint8_t> m_extra;$/;"	m	struct:monero::monero_tx
+m_extra_hex	wallet/monero_wallet_model.h	/^    boost::optional<std::string> m_extra_hex;$/;"	m	struct:monero::monero_tx_wallet
+m_fee	daemon/monero_daemon_model.h	/^    boost::optional<uint64_t> m_fee;$/;"	m	struct:monero::monero_tx
+m_fee	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_fee;$/;"	m	struct:monero::monero_tx_config
+m_full_hex	daemon/monero_daemon_model.h	/^    boost::optional<std::string> m_full_hex;$/;"	m	struct:monero::monero_tx
+m_has_destinations	wallet/monero_wallet_model.h	/^    boost::optional<bool> m_has_destinations;$/;"	m	struct:monero::monero_transfer_query
+m_has_payment_id	wallet/monero_wallet_model.h	/^    boost::optional<bool> m_has_payment_id;$/;"	m	struct:monero::monero_tx_query
+m_hash	daemon/monero_daemon_model.h	/^    boost::optional<std::string> m_hash;$/;"	m	struct:monero::monero_block_header
+m_hash	daemon/monero_daemon_model.h	/^    boost::optional<std::string> m_hash;$/;"	m	struct:monero::monero_tx
+m_hashes	wallet/monero_wallet_model.h	/^    std::vector<std::string> m_hashes;$/;"	m	struct:monero::monero_tx_query
+m_height	daemon/monero_daemon_model.h	/^    boost::optional<uint64_t> m_height;$/;"	m	struct:monero::monero_block_header
+m_height	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_height;$/;"	m	struct:monero::monero_key_image_import_result
+m_height	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_height;$/;"	m	struct:monero::monero_tx_query
+m_hex	daemon/monero_daemon_model.h	/^    boost::optional<std::string> m_hex;$/;"	m	struct:monero::monero_block
+m_hex	daemon/monero_daemon_model.h	/^    boost::optional<std::string> m_hex;$/;"	m	struct:monero::monero_key_image
+m_in_tx_pool	daemon/monero_daemon_model.h	/^    boost::optional<bool> m_in_tx_pool;$/;"	m	struct:monero::monero_tx
+m_in_tx_pool	wallet/monero_wallet_model.h	/^    boost::optional<bool> m_in_tx_pool;$/;"	m	struct:monero::monero_check_tx
+m_include_outputs	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_include_outputs;$/;"	m	struct:monero::monero_tx_query
+m_incoming_transfers	wallet/monero_wallet_model.h	/^    std::vector<std::shared_ptr<monero_incoming_transfer>> m_incoming_transfers;$/;"	m	struct:monero::monero_tx_wallet
+m_index	daemon/monero_daemon_model.h	/^    boost::optional<uint64_t> m_index;$/;"	m	struct:monero::monero_output
+m_index	wallet/monero_wallet_model.h	/^    boost::optional<uint32_t> m_index;$/;"	m	struct:monero::monero_account
+m_index	wallet/monero_wallet_model.h	/^    boost::optional<uint32_t> m_index;$/;"	m	struct:monero::monero_subaddress
+m_index	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_index;  \/\/ TODO: not boost::optional$/;"	m	struct:monero::monero_address_book_entry
+m_input_query	wallet/monero_wallet_model.h	/^    boost::optional<std::shared_ptr<monero_output_query>> m_input_query;$/;"	m	struct:monero::monero_tx_query
+m_input_sum	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_input_sum;$/;"	m	struct:monero::monero_tx_wallet
+m_inputs	daemon/monero_daemon_model.h	/^    std::vector<std::shared_ptr<monero_output>> m_inputs;$/;"	m	struct:monero::monero_tx
+m_integrated_address	wallet/monero_wallet_model.h	/^    std::string m_integrated_address;$/;"	m	struct:monero::monero_integrated_address
+m_is_confirmed	daemon/monero_daemon_model.h	/^    boost::optional<bool> m_is_confirmed;$/;"	m	struct:monero::monero_tx
+m_is_connected	wallet/monero_wallet_full.h	/^    mutable std::atomic<bool> m_is_connected;    \/\/ cache connection status to avoid unecessary RPC calls$/;"	m	class:monero::monero_wallet_full
+m_is_double_spend_seen	daemon/monero_daemon_model.h	/^    boost::optional<bool> m_is_double_spend_seen;$/;"	m	struct:monero::monero_tx
+m_is_failed	daemon/monero_daemon_model.h	/^    boost::optional<bool> m_is_failed;$/;"	m	struct:monero::monero_tx
+m_is_frozen	wallet/monero_wallet_model.h	/^    boost::optional<bool> m_is_frozen;$/;"	m	struct:monero::monero_output_wallet
+m_is_good	wallet/monero_wallet_model.h	/^    bool m_is_good;$/;"	m	struct:monero::monero_check
+m_is_good	wallet/monero_wallet_model.h	/^    bool m_is_good;$/;"	m	struct:monero::monero_message_signature_result
+m_is_incoming	wallet/monero_wallet_model.h	/^    boost::optional<bool> m_is_incoming;$/;"	m	struct:monero::monero_transfer_query
+m_is_incoming	wallet/monero_wallet_model.h	/^    boost::optional<bool> m_is_incoming;$/;"	m	struct:monero::monero_tx_query
+m_is_incoming	wallet/monero_wallet_model.h	/^    boost::optional<bool> m_is_incoming;$/;"	m	struct:monero::monero_tx_wallet
+m_is_kept_by_block	daemon/monero_daemon_model.h	/^    boost::optional<bool> m_is_kept_by_block;$/;"	m	struct:monero::monero_tx
+m_is_locked	wallet/monero_wallet_model.h	/^    boost::optional<bool> m_is_locked;$/;"	m	struct:monero::monero_tx_wallet
+m_is_miner_tx	daemon/monero_daemon_model.h	/^    boost::optional<bool> m_is_miner_tx;$/;"	m	struct:monero::monero_tx
+m_is_multisig	wallet/monero_wallet_model.h	/^    bool m_is_multisig;$/;"	m	struct:monero::monero_multisig_info
+m_is_old	wallet/monero_wallet_model.h	/^    bool m_is_old;$/;"	m	struct:monero::monero_message_signature_result
+m_is_outgoing	wallet/monero_wallet_model.h	/^    boost::optional<bool> m_is_outgoing;$/;"	m	struct:monero::monero_tx_query
+m_is_outgoing	wallet/monero_wallet_model.h	/^    boost::optional<bool> m_is_outgoing;$/;"	m	struct:monero::monero_tx_wallet
+m_is_ready	wallet/monero_wallet_model.h	/^    bool m_is_ready;$/;"	m	struct:monero::monero_multisig_info
+m_is_relayed	daemon/monero_daemon_model.h	/^    boost::optional<bool> m_is_relayed;$/;"	m	struct:monero::monero_tx
+m_is_release	daemon/monero_daemon_model.h	/^    boost::optional<bool> m_is_release;$/;"	m	struct:monero::monero_version
+m_is_spent	wallet/monero_wallet_model.h	/^    boost::optional<bool> m_is_spent;$/;"	m	struct:monero::monero_output_wallet
+m_is_synced	wallet/monero_wallet_full.h	/^    mutable std::atomic<bool> m_is_synced;       \/\/ whether or not wallet is synced$/;"	m	class:monero::monero_wallet_full
+m_is_used	wallet/monero_wallet_model.h	/^    boost::optional<bool> m_is_used;$/;"	m	struct:monero::monero_subaddress
+m_is_view_only	wallet/monero_wallet_keys.h	/^    bool m_is_view_only;$/;"	m	class:monero::monero_wallet_keys
+m_key	daemon/monero_daemon_model.h	/^    boost::optional<std::string> m_key;$/;"	m	struct:monero::monero_tx
+m_key_image	daemon/monero_daemon_model.h	/^    boost::optional<std::shared_ptr<monero_key_image>> m_key_image;$/;"	m	struct:monero::monero_output
+m_key_image	wallet/monero_wallet_model.h	/^    boost::optional<std::string> m_key_image;$/;"	m	struct:monero::monero_tx_config
+m_label	wallet/monero_wallet_model.h	/^    boost::optional<std::string> m_label;$/;"	m	struct:monero::monero_subaddress
+m_language	wallet/monero_wallet_keys.h	/^    std::string m_language;$/;"	m	class:monero::monero_wallet_keys
+m_last_failed_hash	daemon/monero_daemon_model.h	/^    boost::optional<std::string> m_last_failed_hash;$/;"	m	struct:monero::monero_tx
+m_last_failed_height	daemon/monero_daemon_model.h	/^    boost::optional<uint64_t> m_last_failed_height;$/;"	m	struct:monero::monero_tx
+m_last_relayed_timestamp	daemon/monero_daemon_model.h	/^    boost::optional<uint64_t> m_last_relayed_timestamp;$/;"	m	struct:monero::monero_tx
+m_listener_mutex	wallet/monero_wallet_full.cpp	/^    boost::mutex m_listener_mutex;$/;"	m	struct:monero::wallet2_listener	file:
+m_listeners	wallet/monero_wallet_full.h	/^    std::set<monero_wallet_listener*> m_listeners;   \/\/ external wallet listeners$/;"	m	class:monero::monero_wallet_full
+m_long_term_weight	daemon/monero_daemon_model.h	/^    boost::optional<uint64_t> m_long_term_weight;$/;"	m	struct:monero::monero_block_header
+m_major_version	daemon/monero_daemon_model.h	/^    boost::optional<uint32_t> m_major_version;$/;"	m	struct:monero::monero_block_header
+m_max_amount	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_max_amount;$/;"	m	struct:monero::monero_output_query
+m_max_height	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_max_height;$/;"	m	struct:monero::monero_tx_query
+m_max_used_block_hash	daemon/monero_daemon_model.h	/^    boost::optional<std::string> m_max_used_block_hash;$/;"	m	struct:monero::monero_tx
+m_max_used_block_height	daemon/monero_daemon_model.h	/^    boost::optional<uint64_t> m_max_used_block_height;$/;"	m	struct:monero::monero_tx
+m_metadata	daemon/monero_daemon_model.h	/^    boost::optional<std::string> m_metadata;$/;"	m	struct:monero::monero_tx
+m_min_amount	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_min_amount;$/;"	m	struct:monero::monero_output_query
+m_min_height	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_min_height;$/;"	m	struct:monero::monero_tx_query
+m_miner_tx	daemon/monero_daemon_model.h	/^    boost::optional<std::shared_ptr<monero_tx>> m_miner_tx;$/;"	m	struct:monero::monero_block
+m_miner_tx_hash	daemon/monero_daemon_model.h	/^    boost::optional<std::string> m_miner_tx_hash;$/;"	m	struct:monero::monero_block_header
+m_minor_version	daemon/monero_daemon_model.h	/^    boost::optional<uint32_t> m_minor_version;$/;"	m	struct:monero::monero_block_header
+m_mnemonic	wallet/monero_wallet_keys.h	/^    std::string m_mnemonic;$/;"	m	class:monero::monero_wallet_keys
+m_multisig_hex	wallet/monero_wallet_model.h	/^    boost::optional<std::string> m_multisig_hex;$/;"	m	struct:monero::monero_multisig_init_result
+m_multisig_tx_hex	wallet/monero_wallet_model.h	/^    boost::optional<std::string> m_multisig_tx_hex;$/;"	m	struct:monero::monero_tx_set
+m_nettype	utils/monero_utils.h	/^    const cryptonote::network_type m_nettype;$/;"	m	class:monero_utils::MoneroDestinationValidator
+m_network_type	wallet/monero_wallet_keys.h	/^    monero_network_type m_network_type;$/;"	m	class:monero::monero_wallet_keys
+m_nonce	daemon/monero_daemon_model.h	/^    boost::optional<uint32_t> m_nonce;$/;"	m	struct:monero::monero_block_header
+m_note	wallet/monero_wallet_model.h	/^    boost::optional<std::string> m_note;$/;"	m	struct:monero::monero_tx_config
+m_note	wallet/monero_wallet_model.h	/^    boost::optional<std::string> m_note;$/;"	m	struct:monero::monero_tx_wallet
+m_notification_pool	wallet/monero_wallet_full.cpp	/^    std::unique_ptr<tools::threadpool> m_notification_pool;  \/\/ threadpool of size 1 to queue notifications for external announcement$/;"	m	struct:monero::wallet2_listener	file:
+m_num_blocks_fetched	wallet/monero_wallet_model.h	/^    uint64_t m_num_blocks_fetched;$/;"	m	struct:monero::monero_sync_result
+m_num_blocks_to_unlock	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_num_blocks_to_unlock;$/;"	m	struct:monero::monero_subaddress
+m_num_confirmations	daemon/monero_daemon_model.h	/^    boost::optional<uint64_t> m_num_confirmations;$/;"	m	struct:monero::monero_tx
+m_num_confirmations	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_num_confirmations;$/;"	m	struct:monero::monero_check_tx
+m_num_dummy_outputs	wallet/monero_wallet_model.h	/^    boost::optional<uint32_t> m_num_dummy_outputs;$/;"	m	struct:monero::monero_tx_wallet
+m_num_participants	wallet/monero_wallet_model.h	/^    uint32_t m_num_participants;$/;"	m	struct:monero::monero_multisig_info
+m_num_suggested_confirmations	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_num_suggested_confirmations;$/;"	m	struct:monero::monero_incoming_transfer
+m_num_txs	daemon/monero_daemon_model.h	/^    boost::optional<uint32_t> m_num_txs;$/;"	m	struct:monero::monero_block_header
+m_num_unspent_outputs	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_num_unspent_outputs;$/;"	m	struct:monero::monero_subaddress
+m_number	daemon/monero_daemon_model.h	/^    boost::optional<uint32_t> m_number;$/;"	m	struct:monero::monero_version
+m_orphan_status	daemon/monero_daemon_model.h	/^    boost::optional<bool> m_orphan_status;$/;"	m	struct:monero::monero_block_header
+m_outgoing_transfer	wallet/monero_wallet_model.h	/^    boost::optional<std::shared_ptr<monero_outgoing_transfer>> m_outgoing_transfer;$/;"	m	struct:monero::monero_tx_wallet
+m_output_indices	daemon/monero_daemon_model.h	/^    std::vector<uint64_t> m_output_indices;$/;"	m	struct:monero::monero_tx
+m_output_query	wallet/monero_wallet_model.h	/^    boost::optional<std::shared_ptr<monero_output_query>> m_output_query;$/;"	m	struct:monero::monero_tx_query
+m_output_sum	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_output_sum;$/;"	m	struct:monero::monero_tx_wallet
+m_outputs	daemon/monero_daemon_model.h	/^    std::vector<std::shared_ptr<monero_output>> m_outputs;$/;"	m	struct:monero::monero_tx
+m_password	daemon/monero_daemon_model.h	/^    boost::optional<std::string> m_password;$/;"	m	struct:monero::monero_rpc_connection
+m_payment_id	daemon/monero_daemon_model.h	/^    boost::optional<std::string> m_payment_id;$/;"	m	struct:monero::monero_tx
+m_payment_id	wallet/monero_wallet_model.h	/^    boost::optional<std::string> m_payment_id;$/;"	m	struct:monero::monero_address_book_entry
+m_payment_id	wallet/monero_wallet_model.h	/^    boost::optional<std::string> m_payment_id;$/;"	m	struct:monero::monero_tx_config
+m_payment_id	wallet/monero_wallet_model.h	/^    std::string m_payment_id;$/;"	m	struct:monero::monero_integrated_address
+m_payment_ids	wallet/monero_wallet_model.h	/^    std::vector<std::string> m_payment_ids;$/;"	m	struct:monero::monero_tx_query
+m_pow_hash	daemon/monero_daemon_model.h	/^    boost::optional<std::string> m_pow_hash;$/;"	m	struct:monero::monero_block_header
+m_prev_balance	wallet/monero_wallet_full.cpp	/^    uint64_t m_prev_balance;$/;"	m	struct:monero::wallet2_listener	file:
+m_prev_hash	daemon/monero_daemon_model.h	/^    boost::optional<std::string> m_prev_hash;$/;"	m	struct:monero::monero_block_header
+m_prev_locked_tx_hashes	wallet/monero_wallet_full.cpp	/^    std::set<std::string> m_prev_locked_tx_hashes;$/;"	m	struct:monero::wallet2_listener	file:
+m_prev_unlocked_balance	wallet/monero_wallet_full.cpp	/^    uint64_t m_prev_unlocked_balance;$/;"	m	struct:monero::wallet2_listener	file:
+m_primary_address	wallet/monero_wallet_keys.h	/^    std::string m_primary_address;$/;"	m	class:monero::monero_wallet_keys
+m_primary_address	wallet/monero_wallet_model.h	/^    boost::optional<std::string> m_primary_address;$/;"	m	struct:monero::monero_account
+m_priority	wallet/monero_wallet_model.h	/^    boost::optional<monero_tx_priority> m_priority;$/;"	m	struct:monero::monero_tx_config
+m_prunable_hash	daemon/monero_daemon_model.h	/^    boost::optional<std::string> m_prunable_hash;$/;"	m	struct:monero::monero_tx
+m_prunable_hex	daemon/monero_daemon_model.h	/^    boost::optional<std::string> m_prunable_hex;$/;"	m	struct:monero::monero_tx
+m_pruned_hex	daemon/monero_daemon_model.h	/^    boost::optional<std::string> m_pruned_hex;$/;"	m	struct:monero::monero_tx
+m_prv_spend_key	wallet/monero_wallet_keys.h	/^    std::string m_prv_spend_key;$/;"	m	class:monero::monero_wallet_keys
+m_prv_view_key	wallet/monero_wallet_keys.h	/^    std::string m_prv_view_key;$/;"	m	class:monero::monero_wallet_keys
+m_pub_spend_key	wallet/monero_wallet_keys.h	/^    std::string m_pub_spend_key;$/;"	m	class:monero::monero_wallet_keys
+m_pub_view_key	wallet/monero_wallet_keys.h	/^    std::string m_pub_view_key;$/;"	m	class:monero::monero_wallet_keys
+m_rct_sig_prunable	daemon/monero_daemon_model.h	/^    boost::optional<std::string> m_rct_sig_prunable;  \/\/ TODO: implement$/;"	m	struct:monero::monero_tx
+m_rct_signatures	daemon/monero_daemon_model.h	/^    boost::optional<std::string> m_rct_signatures;   \/\/ TODO: implement$/;"	m	struct:monero::monero_tx
+m_received_amount	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_received_amount;$/;"	m	struct:monero::monero_check_tx
+m_received_money	wallet/monero_wallet_model.h	/^    bool m_received_money;$/;"	m	struct:monero::monero_sync_result
+m_received_timestamp	daemon/monero_daemon_model.h	/^    boost::optional<uint64_t> m_received_timestamp;$/;"	m	struct:monero::monero_tx
+m_recipient_name	wallet/monero_wallet_model.h	/^    boost::optional<std::string> m_recipient_name;$/;"	m	struct:monero::monero_tx_config
+m_relay	daemon/monero_daemon_model.h	/^    boost::optional<bool> m_relay;$/;"	m	struct:monero::monero_tx
+m_relay	wallet/monero_wallet_model.h	/^    boost::optional<bool> m_relay;$/;"	m	struct:monero::monero_tx_config
+m_rescan_on_sync	wallet/monero_wallet_full.h	/^    std::atomic<bool> m_rescan_on_sync;          \/\/ whether or not to rescan on sync$/;"	m	class:monero::monero_wallet_full
+m_reward	daemon/monero_daemon_model.h	/^    boost::optional<uint64_t> m_reward;$/;"	m	struct:monero::monero_block_header
+m_ring_output_indices	daemon/monero_daemon_model.h	/^    std::vector<uint64_t> m_ring_output_indices;$/;"	m	struct:monero::monero_output
+m_ring_size	daemon/monero_daemon_model.h	/^    boost::optional<uint32_t> m_ring_size;$/;"	m	struct:monero::monero_tx
+m_ring_size	wallet/monero_wallet_model.h	/^    boost::optional<uint32_t> m_ring_size;$/;"	m	struct:monero::monero_tx_config
+m_signature	daemon/monero_daemon_model.h	/^    boost::optional<std::string> m_signature;$/;"	m	struct:monero::monero_key_image
+m_signature_type	wallet/monero_wallet_model.h	/^    monero_message_signature_type m_signature_type;$/;"	m	struct:monero::monero_message_signature_result
+m_signatures	daemon/monero_daemon_model.h	/^    std::vector<std::string> m_signatures;$/;"	m	struct:monero::monero_tx
+m_signed_multisig_tx_hex	wallet/monero_wallet_model.h	/^    boost::optional<std::string> m_signed_multisig_tx_hex;$/;"	m	struct:monero::monero_multisig_sign_result
+m_signed_tx_hex	wallet/monero_wallet_model.h	/^    boost::optional<std::string> m_signed_tx_hex;$/;"	m	struct:monero::monero_tx_set
+m_size	daemon/monero_daemon_model.h	/^    boost::optional<uint64_t> m_size;$/;"	m	struct:monero::monero_block_header
+m_size	daemon/monero_daemon_model.h	/^    boost::optional<uint64_t> m_size;$/;"	m	struct:monero::monero_tx
+m_skip_signing	wallet/monero_wallet_model.h	/^    boost::optional<bool> m_skip_signing;$/;"	m	struct:monero::monero_tx_config
+m_spent_amount	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_spent_amount;$/;"	m	struct:monero::monero_key_image_import_result
+m_standard_address	wallet/monero_wallet_model.h	/^    std::string m_standard_address;$/;"	m	struct:monero::monero_integrated_address
+m_stealth_public_key	daemon/monero_daemon_model.h	/^    boost::optional<std::string> m_stealth_public_key;$/;"	m	struct:monero::monero_output
+m_subaddress_index	wallet/monero_wallet_model.h	/^    boost::optional<uint32_t> m_subaddress_index;$/;"	m	struct:monero::monero_incoming_transfer
+m_subaddress_index	wallet/monero_wallet_model.h	/^    boost::optional<uint32_t> m_subaddress_index;$/;"	m	struct:monero::monero_output_wallet
+m_subaddress_index	wallet/monero_wallet_model.h	/^    boost::optional<uint32_t> m_subaddress_index;$/;"	m	struct:monero::monero_transfer_query
+m_subaddress_indices	wallet/monero_wallet_model.h	/^    std::vector<uint32_t> m_subaddress_indices;$/;"	m	struct:monero::monero_outgoing_transfer
+m_subaddress_indices	wallet/monero_wallet_model.h	/^    std::vector<uint32_t> m_subaddress_indices;$/;"	m	struct:monero::monero_output_query
+m_subaddress_indices	wallet/monero_wallet_model.h	/^    std::vector<uint32_t> m_subaddress_indices;$/;"	m	struct:monero::monero_transfer_query
+m_subaddress_indices	wallet/monero_wallet_model.h	/^    std::vector<uint32_t> m_subaddress_indices;$/;"	m	struct:monero::monero_tx_config
+m_subaddresses	wallet/monero_wallet_model.h	/^    std::vector<monero_subaddress> m_subaddresses;$/;"	m	struct:monero::monero_account
+m_sweep_each_subaddress	wallet/monero_wallet_model.h	/^    boost::optional<bool> m_sweep_each_subaddress;$/;"	m	struct:monero::monero_tx_config
+m_sync_cv	wallet/monero_wallet_full.h	/^    boost::condition_variable m_sync_cv;         \/\/ to make sync threads woke$/;"	m	class:monero::monero_wallet_full
+m_sync_end_height	wallet/monero_wallet_full.cpp	/^    boost::optional<uint64_t> m_sync_end_height;$/;"	m	struct:monero::wallet2_listener	file:
+m_sync_loop_running	wallet/monero_wallet_full.h	/^    std::atomic<bool> m_sync_loop_running;       \/\/ whether or not the syncing thread is shut down$/;"	m	class:monero::monero_wallet_full
+m_sync_mutex	wallet/monero_wallet_full.h	/^    boost::mutex m_sync_mutex;                   \/\/ synchronize sync() and syncAsync() requests$/;"	m	class:monero::monero_wallet_full
+m_sync_start_height	wallet/monero_wallet_full.cpp	/^    boost::optional<uint64_t> m_sync_start_height;$/;"	m	struct:monero::wallet2_listener	file:
+m_syncing_enabled	wallet/monero_wallet_full.h	/^    std::atomic<bool> m_syncing_enabled;         \/\/ whether or not auto sync is enabled$/;"	m	class:monero::monero_wallet_full
+m_syncing_interval	wallet/monero_wallet_full.h	/^    std::atomic<int> m_syncing_interval;         \/\/ auto sync loop interval in milliseconds$/;"	m	class:monero::monero_wallet_full
+m_syncing_mutex	wallet/monero_wallet_full.h	/^    boost::mutex m_syncing_mutex;                \/\/ synchronize auto sync loop$/;"	m	class:monero::monero_wallet_full
+m_syncing_thread	wallet/monero_wallet_full.h	/^    boost::thread m_syncing_thread;              \/\/ thread for auto sync loop$/;"	m	class:monero::monero_wallet_full
+m_tag	wallet/monero_wallet_model.h	/^    boost::optional<std::string> m_tag;$/;"	m	struct:monero::monero_account
+m_threshold	wallet/monero_wallet_model.h	/^    uint32_t m_threshold;$/;"	m	struct:monero::monero_multisig_info
+m_timestamp	daemon/monero_daemon_model.h	/^    boost::optional<uint64_t> m_timestamp;$/;"	m	struct:monero::monero_block_header
+m_total_amount	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_total_amount;$/;"	m	struct:monero::monero_check_reserve
+m_transfer_query	wallet/monero_wallet_model.h	/^    boost::optional<std::shared_ptr<monero_transfer_query>> m_transfer_query;$/;"	m	struct:monero::monero_tx_query
+m_tx	daemon/monero_daemon_model.h	/^    std::shared_ptr<monero_tx> m_tx;$/;"	m	struct:monero::monero_output
+m_tx	wallet/monero_wallet_model.h	/^    std::shared_ptr<monero_tx_wallet> m_tx;$/;"	m	struct:monero::monero_transfer
+m_tx_hashes	daemon/monero_daemon_model.h	/^    std::vector<std::string> m_tx_hashes;$/;"	m	struct:monero::monero_block
+m_tx_hashes	wallet/monero_wallet_model.h	/^    std::vector<std::string> m_tx_hashes;$/;"	m	struct:monero::monero_multisig_sign_result
+m_tx_query	wallet/monero_wallet_model.h	/^    boost::optional<std::shared_ptr<monero_tx_query>> m_tx_query;$/;"	m	struct:monero::monero_output_query
+m_tx_query	wallet/monero_wallet_model.h	/^    boost::optional<std::shared_ptr<monero_tx_query>> m_tx_query;$/;"	m	struct:monero::monero_transfer_query
+m_tx_set	wallet/monero_wallet_model.h	/^    boost::optional<std::shared_ptr<monero_tx_set>> m_tx_set;$/;"	m	struct:monero::monero_tx_wallet
+m_txs	daemon/monero_daemon_model.h	/^    std::vector<std::shared_ptr<monero_tx>> m_txs;$/;"	m	struct:monero::monero_block
+m_txs	wallet/monero_wallet_model.h	/^    std::vector<std::shared_ptr<monero_tx_wallet>> m_txs;$/;"	m	struct:monero::monero_tx_set
+m_unconfirmed_spent_amount	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_unconfirmed_spent_amount;$/;"	m	struct:monero::monero_check_reserve
+m_unlock_height	daemon/monero_daemon_model.h	/^    boost::optional<uint64_t> m_unlock_height;$/;"	m	struct:monero::monero_tx
+m_unlock_height	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_unlock_height;$/;"	m	struct:monero::monero_tx_config
+m_unlocked_balance	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_unlocked_balance;$/;"	m	struct:monero::monero_account
+m_unlocked_balance	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_unlocked_balance;$/;"	m	struct:monero::monero_subaddress
+m_unsigned_tx_hex	wallet/monero_wallet_model.h	/^    boost::optional<std::string> m_unsigned_tx_hex;$/;"	m	struct:monero::monero_tx_set
+m_unspent_amount	wallet/monero_wallet_model.h	/^    boost::optional<uint64_t> m_unspent_amount;$/;"	m	struct:monero::monero_key_image_import_result
+m_uri	daemon/monero_daemon_model.h	/^    boost::optional<std::string> m_uri;$/;"	m	struct:monero::monero_rpc_connection
+m_username	daemon/monero_daemon_model.h	/^    boost::optional<std::string> m_username;$/;"	m	struct:monero::monero_rpc_connection
+m_version	daemon/monero_daemon_model.h	/^    boost::optional<uint32_t> m_version;$/;"	m	struct:monero::monero_tx
+m_version	wallet/monero_wallet_model.h	/^    uint32_t m_version;$/;"	m	struct:monero::monero_message_signature_result
+m_w2	wallet/monero_wallet_full.cpp	/^    tools::wallet2& m_w2;         \/\/ internal wallet implementation to listen to$/;"	m	struct:monero::wallet2_listener	file:
+m_w2	wallet/monero_wallet_full.h	/^    std::unique_ptr<tools::wallet2> m_w2;            \/\/ internal wallet implementation$/;"	m	class:monero::monero_wallet_full
+m_w2_listener	wallet/monero_wallet_full.h	/^    std::unique_ptr<wallet2_listener> m_w2_listener; \/\/ internal wallet implementation listener$/;"	m	class:monero::monero_wallet_full
+m_wallet	wallet/monero_wallet_full.cpp	/^    monero_wallet_full& m_wallet; \/\/ wallet to provide context for notifications$/;"	m	struct:monero::wallet2_listener	file:
+m_weight	daemon/monero_daemon_model.h	/^    boost::optional<uint64_t> m_weight;$/;"	m	struct:monero::monero_block_header
+m_weight	daemon/monero_daemon_model.h	/^    boost::optional<uint64_t> m_weight;$/;"	m	struct:monero::monero_tx
+make_multisig	wallet/monero_wallet.h	/^    virtual std::string make_multisig(const std::vector<std::string>& multisig_hexes, int threshold, const std::string& password) {$/;"	f	class:monero::monero_wallet
+make_multisig	wallet/monero_wallet_full.cpp	/^  std::string monero_wallet_full::make_multisig(const std::vector<std::string>& multisig_hexes, int threshold, const std::string& password) {$/;"	f	class:monero::monero_wallet_full
+meets_criteria	wallet/monero_wallet_model.cpp	/^  bool monero_output_query::meets_criteria(monero_output_wallet* output, bool query_parent) const {$/;"	f	class:monero::monero_output_query
+meets_criteria	wallet/monero_wallet_model.cpp	/^  bool monero_transfer_query::meets_criteria(monero_transfer* transfer, bool query_parent) const {$/;"	f	class:monero::monero_transfer_query
+meets_criteria	wallet/monero_wallet_model.cpp	/^  bool monero_tx_query::meets_criteria(monero_tx_wallet* tx, bool query_children) const {$/;"	f	class:monero::monero_tx_query
+merge	daemon/monero_daemon_model.cpp	/^  void monero_block::merge(const std::shared_ptr<monero_block>& self, const std::shared_ptr<monero_block>& other) {$/;"	f	class:monero::monero_block
+merge	daemon/monero_daemon_model.cpp	/^  void monero_block::merge(const std::shared_ptr<monero_block_header>& self, const std::shared_ptr<monero_block_header>& other) {$/;"	f	class:monero::monero_block
+merge	daemon/monero_daemon_model.cpp	/^  void monero_block_header::merge(const std::shared_ptr<monero_block_header>& self, const std::shared_ptr<monero_block_header>& other) {$/;"	f	class:monero::monero_block_header
+merge	daemon/monero_daemon_model.cpp	/^  void monero_key_image::merge(const std::shared_ptr<monero_key_image>& self, const std::shared_ptr<monero_key_image>& other) {$/;"	f	class:monero::monero_key_image
+merge	daemon/monero_daemon_model.cpp	/^  void monero_output::merge(const std::shared_ptr<monero_output>& self, const std::shared_ptr<monero_output>& other) {$/;"	f	class:monero::monero_output
+merge	daemon/monero_daemon_model.cpp	/^  void monero_tx::merge(const std::shared_ptr<monero_tx>& self, const std::shared_ptr<monero_tx>& other) {$/;"	f	class:monero::monero_tx
+merge	wallet/monero_wallet_model.cpp	/^  void monero_incoming_transfer::merge(const std::shared_ptr<monero_incoming_transfer>& self, const std::shared_ptr<monero_incoming_transfer>& other) {$/;"	f	class:monero::monero_incoming_transfer
+merge	wallet/monero_wallet_model.cpp	/^  void monero_incoming_transfer::merge(const std::shared_ptr<monero_transfer>& self, const std::shared_ptr<monero_transfer>& other) {$/;"	f	class:monero::monero_incoming_transfer
+merge	wallet/monero_wallet_model.cpp	/^  void monero_outgoing_transfer::merge(const std::shared_ptr<monero_outgoing_transfer>& self, const std::shared_ptr<monero_outgoing_transfer>& other) {$/;"	f	class:monero::monero_outgoing_transfer
+merge	wallet/monero_wallet_model.cpp	/^  void monero_outgoing_transfer::merge(const std::shared_ptr<monero_transfer>& self, const std::shared_ptr<monero_transfer>& other) {$/;"	f	class:monero::monero_outgoing_transfer
+merge	wallet/monero_wallet_model.cpp	/^  void monero_output_wallet::merge(const std::shared_ptr<monero_output>& self, const std::shared_ptr<monero_output>& other) {$/;"	f	class:monero::monero_output_wallet
+merge	wallet/monero_wallet_model.cpp	/^  void monero_output_wallet::merge(const std::shared_ptr<monero_output_wallet>& self, const std::shared_ptr<monero_output_wallet>& other) {$/;"	f	class:monero::monero_output_wallet
+merge	wallet/monero_wallet_model.cpp	/^  void monero_transfer::merge(const std::shared_ptr<monero_transfer>& self, const std::shared_ptr<monero_transfer>& other) {$/;"	f	class:monero::monero_transfer
+merge	wallet/monero_wallet_model.cpp	/^  void monero_tx_wallet::merge(const std::shared_ptr<monero_tx>& self, const std::shared_ptr<monero_tx>& other) {$/;"	f	class:monero::monero_tx_wallet
+merge	wallet/monero_wallet_model.cpp	/^  void monero_tx_wallet::merge(const std::shared_ptr<monero_tx_wallet>& self, const std::shared_ptr<monero_tx_wallet>& other) {$/;"	f	class:monero::monero_tx_wallet
+merge_incoming_transfer	wallet/monero_wallet_model.cpp	/^  void merge_incoming_transfer(std::vector<std::shared_ptr<monero_incoming_transfer>>& transfers, const std::shared_ptr<monero_incoming_transfer>& transfer) {$/;"	f	namespace:monero
+merge_tx	daemon/monero_daemon_model.cpp	/^  void merge_tx(std::vector<std::shared_ptr<monero_tx>>& txs, const std::shared_ptr<monero_tx>& tx) {$/;"	f	namespace:monero
+merge_tx	wallet/monero_wallet_full.cpp	/^  void merge_tx(const std::shared_ptr<monero_tx_wallet>& tx, std::map<std::string, std::shared_ptr<monero_tx_wallet>>& tx_map, std::map<uint64_t, std::shared_ptr<monero_block>>& block_map) {$/;"	f	namespace:monero
+monero	daemon/monero_daemon.cpp	/^namespace monero {$/;"	n	file:
+monero	daemon/monero_daemon.h	/^namespace monero {$/;"	n
+monero	daemon/monero_daemon_model.cpp	/^namespace monero {$/;"	n	file:
+monero	daemon/monero_daemon_model.h	/^namespace monero {$/;"	n
+monero	wallet/monero_wallet.h	/^namespace monero {$/;"	n
+monero	wallet/monero_wallet_full.cpp	/^namespace monero {$/;"	n	file:
+monero	wallet/monero_wallet_full.h	/^namespace monero {$/;"	n
+monero	wallet/monero_wallet_keys.cpp	/^namespace monero {$/;"	n	file:
+monero	wallet/monero_wallet_keys.h	/^namespace monero {$/;"	n
+monero	wallet/monero_wallet_model.cpp	/^namespace monero {$/;"	n	file:
+monero	wallet/monero_wallet_model.h	/^namespace monero {$/;"	n
+monero_account	wallet/monero_wallet_model.h	/^  struct monero_account : public serializable_struct {$/;"	s	namespace:monero
+monero_address_book_entry	wallet/monero_wallet_model.h	/^    monero_address_book_entry() {}$/;"	f	struct:monero::monero_address_book_entry
+monero_address_book_entry	wallet/monero_wallet_model.h	/^    monero_address_book_entry(uint64_t index, const std::string& address, const std::string& description) : m_index(index), m_address(address), m_description(description) {}$/;"	f	struct:monero::monero_address_book_entry
+monero_address_book_entry	wallet/monero_wallet_model.h	/^    monero_address_book_entry(uint64_t index, const std::string& address, const std::string& description, const std::string& payment_id) : m_index(index), m_address(address), m_description(description), m_payment_id(payment_id) {}$/;"	f	struct:monero::monero_address_book_entry
+monero_address_book_entry	wallet/monero_wallet_model.h	/^  struct monero_address_book_entry : serializable_struct {$/;"	s	namespace:monero
+monero_block	daemon/monero_daemon_model.h	/^  struct monero_block : public monero_block_header {$/;"	s	namespace:monero
+monero_block_header	daemon/monero_daemon_model.h	/^  struct monero_block_header : public serializable_struct {$/;"	s	namespace:monero
+monero_check	wallet/monero_wallet_model.h	/^  struct monero_check : public serializable_struct {$/;"	s	namespace:monero
+monero_check_reserve	wallet/monero_wallet_model.h	/^  struct monero_check_reserve : public monero_check  {$/;"	s	namespace:monero
+monero_check_tx	wallet/monero_wallet_model.h	/^  struct monero_check_tx : public monero_check {$/;"	s	namespace:monero
+monero_destination	wallet/monero_wallet_model.h	/^    monero_destination(boost::optional<std::string> address = boost::none, boost::optional<uint64_t> amount = boost::none) : m_address(address), m_amount(amount) {}$/;"	f	struct:monero::monero_destination
+monero_destination	wallet/monero_wallet_model.h	/^  struct monero_destination {$/;"	s	namespace:monero
+monero_incoming_transfer	wallet/monero_wallet_model.h	/^  struct monero_incoming_transfer : public monero_transfer {$/;"	s	namespace:monero
+monero_integrated_address	wallet/monero_wallet_model.h	/^  struct monero_integrated_address : public serializable_struct {$/;"	s	namespace:monero
+monero_key_image	daemon/monero_daemon_model.h	/^  struct monero_key_image : public serializable_struct {$/;"	s	namespace:monero
+monero_key_image_import_result	wallet/monero_wallet_model.h	/^  struct monero_key_image_import_result : public serializable_struct {$/;"	s	namespace:monero
+monero_message_signature_result	wallet/monero_wallet_model.h	/^  struct monero_message_signature_result : public serializable_struct {$/;"	s	namespace:monero
+monero_multisig_info	wallet/monero_wallet_model.h	/^  struct monero_multisig_info : serializable_struct {$/;"	s	namespace:monero
+monero_multisig_init_result	wallet/monero_wallet_model.h	/^  struct monero_multisig_init_result : serializable_struct {$/;"	s	namespace:monero
+monero_multisig_sign_result	wallet/monero_wallet_model.h	/^  struct monero_multisig_sign_result : serializable_struct {$/;"	s	namespace:monero
+monero_outgoing_transfer	wallet/monero_wallet_model.h	/^  struct monero_outgoing_transfer : public monero_transfer {$/;"	s	namespace:monero
+monero_output	daemon/monero_daemon_model.h	/^  struct monero_output : public serializable_struct {$/;"	s	namespace:monero
+monero_output_query	wallet/monero_wallet_model.h	/^  struct monero_output_query : public monero_output_wallet {$/;"	s	namespace:monero
+monero_output_wallet	wallet/monero_wallet_model.h	/^  struct monero_output_wallet : public monero_output {$/;"	s	namespace:monero
+monero_rpc_connection	daemon/monero_daemon_model.h	/^    monero_rpc_connection(const boost::optional<std::string>& uri = boost::none, const boost::optional<std::string>& username = boost::none, const boost::optional<std::string>& password = boost::none) : m_uri(uri), m_username(username), m_password(password) {}$/;"	f	struct:monero::monero_rpc_connection
+monero_rpc_connection	daemon/monero_daemon_model.h	/^  struct monero_rpc_connection : public serializable_struct {$/;"	s	namespace:monero
+monero_subaddress	wallet/monero_wallet_model.h	/^  struct monero_subaddress : public serializable_struct {$/;"	s	namespace:monero
+monero_sync_result	wallet/monero_wallet_model.h	/^    monero_sync_result() {}$/;"	f	struct:monero::monero_sync_result
+monero_sync_result	wallet/monero_wallet_model.h	/^    monero_sync_result(const uint64_t num_blocks_fetched, const bool received_money) : m_num_blocks_fetched(num_blocks_fetched), m_received_money(received_money) {}$/;"	f	struct:monero::monero_sync_result
+monero_sync_result	wallet/monero_wallet_model.h	/^  struct monero_sync_result : public serializable_struct {$/;"	s	namespace:monero
+monero_transfer	wallet/monero_wallet_model.h	/^  struct monero_transfer : serializable_struct {$/;"	s	namespace:monero
+monero_transfer_query	wallet/monero_wallet_model.h	/^  struct monero_transfer_query : public monero_transfer {$/;"	s	namespace:monero
+monero_tx	daemon/monero_daemon_model.h	/^  struct monero_tx : public serializable_struct {$/;"	s	namespace:monero
+monero_tx_config	wallet/monero_wallet_model.cpp	/^  monero_tx_config::monero_tx_config(const monero_tx_config& config) {$/;"	f	class:monero::monero_tx_config
+monero_tx_config	wallet/monero_wallet_model.h	/^    monero_tx_config() {}$/;"	f	struct:monero::monero_tx_config
+monero_tx_config	wallet/monero_wallet_model.h	/^  struct monero_tx_config : public serializable_struct {$/;"	s	namespace:monero
+monero_tx_query	wallet/monero_wallet_model.h	/^  struct monero_tx_query : public monero_tx_wallet {$/;"	s	namespace:monero
+monero_tx_set	wallet/monero_wallet_model.h	/^  struct monero_tx_set : public serializable_struct {$/;"	s	namespace:monero
+monero_tx_wallet	wallet/monero_wallet_model.h	/^  struct monero_tx_wallet : public monero_tx {$/;"	s	namespace:monero
+monero_utils	utils/monero_utils.h	/^namespace monero_utils$/;"	n
+monero_utils_h	utils/monero_utils.h	56;"	d
+monero_version	daemon/monero_daemon_model.h	/^  struct monero_version : public serializable_struct {$/;"	s	namespace:monero
+monero_wallet	wallet/monero_wallet.h	/^  class monero_wallet {$/;"	c	namespace:monero
+monero_wallet_full	wallet/monero_wallet_full.h	/^  class monero_wallet_full : public monero_wallet {$/;"	c	namespace:monero
+monero_wallet_keys	wallet/monero_wallet_keys.h	/^  class monero_wallet_keys : public monero_wallet {$/;"	c	namespace:monero
+monero_wallet_listener	wallet/monero_wallet.h	/^  class monero_wallet_listener {$/;"	c	namespace:monero
+move_to	wallet/monero_wallet.h	/^    virtual void move_to(const std::string& path, const std::string& password) {$/;"	f	class:monero::monero_wallet
+move_to	wallet/monero_wallet_full.cpp	/^  void monero_wallet_full::move_to(const std::string& path, const std::string& password) {$/;"	f	class:monero::monero_wallet_full
+node_to_block_query	wallet/monero_wallet_model.cpp	/^  std::shared_ptr<monero_block> node_to_block_query(const boost::property_tree::ptree& node) {$/;"	f	namespace:monero
+notify_outputs	wallet/monero_wallet_full.cpp	/^    void notify_outputs(const std::shared_ptr<monero_tx_wallet>& tx) {$/;"	f	struct:monero::wallet2_listener	file:
+on_balances_changed	wallet/monero_wallet.h	/^    virtual void on_balances_changed(uint64_t new_balance, uint64_t new_unlocked_balance) {};$/;"	f	class:monero::monero_wallet_listener
+on_new_block	wallet/monero_wallet.h	/^    virtual void on_new_block(uint64_t height) {};$/;"	f	class:monero::monero_wallet_listener
+on_output_received	wallet/monero_wallet.h	/^    virtual void on_output_received(const monero_output_wallet& output) {};$/;"	f	class:monero::monero_wallet_listener
+on_output_spent	wallet/monero_wallet.h	/^    virtual void on_output_spent(const monero_output_wallet& output) {};$/;"	f	class:monero::monero_wallet_listener
+on_spend_tx_hashes	wallet/monero_wallet_full.cpp	/^    void on_spend_tx_hashes(const std::vector<std::string>& tx_hashes) {$/;"	f	struct:monero::wallet2_listener
+on_spend_txs	wallet/monero_wallet_full.cpp	/^    void on_spend_txs(const std::vector<std::shared_ptr<monero_tx_wallet>>& txs) {$/;"	f	struct:monero::wallet2_listener
+on_sync_end	wallet/monero_wallet_full.cpp	/^    void on_sync_end() {$/;"	f	struct:monero::wallet2_listener
+on_sync_progress	wallet/monero_wallet.h	/^    virtual void on_sync_progress(uint64_t height, uint64_t start_height, uint64_t end_height, double percent_done, const std::string& message) {}$/;"	f	class:monero::monero_wallet_listener
+on_sync_start	wallet/monero_wallet_full.cpp	/^    void on_sync_start(uint64_t start_height) {$/;"	f	struct:monero::wallet2_listener
+open_wallet	wallet/monero_wallet_full.cpp	/^  monero_wallet_full* monero_wallet_full::open_wallet(const std::string& path, const std::string& password, const monero_network_type network_type) {$/;"	f	class:monero::monero_wallet_full
+open_wallet_data	wallet/monero_wallet_full.cpp	/^  monero_wallet_full* monero_wallet_full::open_wallet_data(const std::string& password, const monero_network_type network_type, const std::string& keys_data, const std::string& cache_data, const monero_rpc_connection& daemon_connection, std::unique_ptr<epee::net_utils::http::http_client_factory> http_client_factory) {$/;"	f	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    bool check_spend_proof(const std::string& tx_hash, const std::string& message, const std::string& signature) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    bool get_attribute(const std::string& key, std::string& value) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    bool is_connected_to_daemon() const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    bool is_daemon_synced() const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    bool is_daemon_trusted() const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    bool is_multisig_import_needed() const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    bool is_output_frozen(const std::string& key_image) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    bool is_synced() const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    boost::optional<monero_rpc_connection> get_daemon_connection() const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    int import_multisig_hex(const std::vector<std::string>& multisig_hexes) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    int import_outputs(const std::string& outputs_hex) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    monero_account create_account(const std::string& label = "") override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    monero_account get_account(const uint32_t account_idx, bool include_subaddresses) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    monero_integrated_address decode_integrated_address(const std::string& integrated_address) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    monero_integrated_address get_integrated_address(const std::string& standard_address = "", const std::string& payment_id = "") const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    monero_message_signature_result verify_message(const std::string& msg, const std::string& address, const std::string& signature) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    monero_multisig_info get_multisig_info() const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    monero_multisig_init_result exchange_multisig_keys(const std::vector<std::string>& mutisig_hexes, const std::string& password) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    monero_multisig_sign_result sign_multisig_tx_hex(const std::string& multisig_tx_hex) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    monero_network_type get_network_type() const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    monero_subaddress create_subaddress(uint32_t account_idx, const std::string& label = "") override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    monero_subaddress get_address_index(const std::string& address) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    monero_sync_result sync() override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    monero_sync_result sync(monero_wallet_listener& listener) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    monero_sync_result sync(uint64_t start_height) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    monero_sync_result sync(uint64_t start_height, monero_wallet_listener& listener) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    monero_tx_config load_multisig_tx(const std::string& multisig_tx_hex) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    monero_tx_set describe_tx_set(const monero_tx_set& tx_set) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    monero_version get_version() const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::set<monero_wallet_listener*> get_listeners() override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::shared_ptr<monero_check_reserve> check_reserve_proof(const std::string& address, const std::string& message, const std::string& signature) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::shared_ptr<monero_check_tx> check_tx_key(const std::string& tx_hash, const std::string& txKey, const std::string& address) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::shared_ptr<monero_check_tx> check_tx_proof(const std::string& tx_hash, const std::string& address, const std::string& message, const std::string& signature) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::shared_ptr<monero_key_image_import_result> import_key_images(const std::vector<std::shared_ptr<monero_key_image>>& key_images) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::shared_ptr<monero_tx_config> parse_payment_uri(const std::string& uri) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::shared_ptr<monero_tx_wallet> sweep_output(const monero_tx_config& config) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::string export_multisig_hex() override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::string export_outputs(bool all = false, bool complete = false) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::string get_address(const uint32_t account_idx, const uint32_t subaddress_idx) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::string get_mnemonic() const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::string get_mnemonic_language() const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::string get_multisig_seed(const std::string& seed_pass) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::string get_path() const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::string get_payment_uri(const monero_tx_config& config) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::string get_private_spend_key() const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::string get_private_view_key() const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::string get_public_spend_key() const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::string get_public_view_key() const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::string get_reserve_proof_account(uint32_t account_idx, uint64_t amount, const std::string& message) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::string get_reserve_proof_wallet(const std::string& message) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::string get_spend_proof(const std::string& tx_hash, const std::string& message) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::string get_tx_key(const std::string& tx_hash) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::string get_tx_note(const std::string& tx_hash) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::string get_tx_proof(const std::string& tx_hash, const std::string& address, const std::string& message) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::string make_multisig(const std::vector<std::string>& multisig_hexes, int threshold, const std::string& password) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::string prepare_multisig() override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::string sign_message(const std::string& msg, monero_message_signature_type signature_type, uint32_t account_idx = 0, uint32_t subaddress_idx = 0) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::string sign_txs(const std::string& unsigned_tx_hex) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::vector<monero_account> get_accounts(bool include_subaddresses, const std::string& tag) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::vector<monero_address_book_entry> get_address_book_entries(const std::vector<uint64_t>& indices) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::vector<monero_subaddress> get_subaddresses(const uint32_t account_idx, const std::vector<uint32_t>& subaddress_indices) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::vector<std::shared_ptr<monero_key_image>> export_key_images(bool all = false) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::vector<std::shared_ptr<monero_output_wallet>> get_outputs(const monero_output_query& query) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::vector<std::shared_ptr<monero_transfer>> get_transfers(const monero_transfer_query& query) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::vector<std::shared_ptr<monero_tx_wallet>> create_txs(const monero_tx_config& config) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::vector<std::shared_ptr<monero_tx_wallet>> get_txs() const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::vector<std::shared_ptr<monero_tx_wallet>> get_txs(const monero_tx_query& query) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::vector<std::shared_ptr<monero_tx_wallet>> get_txs(const monero_tx_query& query, std::vector<std::string>& missing_tx_hashes) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::vector<std::shared_ptr<monero_tx_wallet>> reconstruct_tx(const std::string& multisig_tx_hex) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::vector<std::shared_ptr<monero_tx_wallet>> reconstruct_tx(const std::string& multisig_tx_hex, const std::vector<monero::monero_destination>& destinations) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::vector<std::shared_ptr<monero_tx_wallet>> sweep_dust(bool relay = false) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::vector<std::shared_ptr<monero_tx_wallet>> sweep_unlocked(const monero_tx_config& config) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::vector<std::string> get_tx_notes(const std::vector<std::string>& tx_hashes) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::vector<std::string> relay_txs(const std::vector<std::string>& tx_metadatas) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::vector<std::string> submit_multisig_tx_hex(const std::string& signed_multisig_tx_hex) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    std::vector<std::string> submit_txs(const std::string& signed_tx_hex) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    uint64_t add_address_book_entry(const std::string& address, const std::string& description) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    uint64_t get_balance() const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    uint64_t get_balance(uint32_t account_idx) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    uint64_t get_balance(uint32_t account_idx, uint32_t subaddress_idx) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    uint64_t get_daemon_height() const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    uint64_t get_daemon_max_peer_height() const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    uint64_t get_height() const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    uint64_t get_height_by_date(uint16_t year, uint8_t month, uint8_t day) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    uint64_t get_sync_height() const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    uint64_t get_unlocked_balance() const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    uint64_t get_unlocked_balance(uint32_t account_idx) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    uint64_t get_unlocked_balance(uint32_t account_idx, uint32_t subaddress_idx) const override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    uint64_t wait_for_next_block() override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    void add_listener(monero_wallet_listener& listener) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    void change_password(const std::string& old_password, const std::string& new_password) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    void close(bool save = false) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    void delete_address_book_entry(uint64_t index) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    void edit_address_book_entry(uint64_t index, bool set_address, const std::string& address, bool set_description, const std::string& description) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    void freeze_output(const std::string& key_image) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    void move_to(const std::string& path, const std::string& password) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    void remove_listener(monero_wallet_listener& listener) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    void rescan_blockchain() override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    void rescan_spent() override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    void save() override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    void set_attribute(const std::string& key, const std::string& val) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    void set_daemon_connection(const boost::optional<monero_rpc_connection>& connection) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    void set_daemon_connection(const std::string& uri, const std::string& username = "", const std::string& password = "") override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    void set_sync_height(uint64_t sync_height) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    void set_tx_note(const std::string& tx_hash, const std::string& note) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    void set_tx_notes(const std::vector<std::string>& tx_hashes, const std::vector<std::string>& notes) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    void start_mining(boost::optional<uint64_t> num_threads, boost::optional<bool> background_mining, boost::optional<bool> ignore_battery) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    void start_syncing(uint64_t sync_period_in_ms) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    void stop_mining() override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    void stop_syncing() override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_full.h	/^    void thaw_output(const std::string& key_image) override;$/;"	m	class:monero::monero_wallet_full
+override	wallet/monero_wallet_keys.h	/^    monero_account get_account(const uint32_t account_idx, bool include_subaddresses) const override;$/;"	m	class:monero::monero_wallet_keys
+override	wallet/monero_wallet_keys.h	/^    monero_integrated_address decode_integrated_address(const std::string& integrated_address) const override;$/;"	m	class:monero::monero_wallet_keys
+override	wallet/monero_wallet_keys.h	/^    monero_integrated_address get_integrated_address(const std::string& standard_address = "", const std::string& payment_id = "") const override;$/;"	m	class:monero::monero_wallet_keys
+override	wallet/monero_wallet_keys.h	/^    monero_message_signature_result verify_message(const std::string& msg, const std::string& address, const std::string& signature) const override;$/;"	m	class:monero::monero_wallet_keys
+override	wallet/monero_wallet_keys.h	/^    monero_version get_version() const override;$/;"	m	class:monero::monero_wallet_keys
+override	wallet/monero_wallet_keys.h	/^    std::string get_address(const uint32_t account_idx, const uint32_t subaddress_idx) const override;$/;"	m	class:monero::monero_wallet_keys
+override	wallet/monero_wallet_keys.h	/^    std::string sign_message(const std::string& msg, monero_message_signature_type signature_type, uint32_t account_idx = 0, uint32_t subaddress_idx = 0) const override;$/;"	m	class:monero::monero_wallet_keys
+override	wallet/monero_wallet_keys.h	/^    std::vector<monero_subaddress> get_subaddresses(const uint32_t account_idx, const std::vector<uint32_t>& subaddress_indices) const override;$/;"	m	class:monero::monero_wallet_keys
+override	wallet/monero_wallet_keys.h	/^    void close(bool save = false) override;$/;"	m	class:monero::monero_wallet_keys
+parse_payment_uri	wallet/monero_wallet.h	/^    virtual std::shared_ptr<monero_tx_config> parse_payment_uri(const std::string& uri) const {$/;"	f	class:monero::monero_wallet
+parse_payment_uri	wallet/monero_wallet_full.cpp	/^  std::shared_ptr<monero_tx_config> monero_wallet_full::parse_payment_uri(const std::string& uri) const {$/;"	f	class:monero::monero_wallet_full
+prepare_multisig	wallet/monero_wallet.h	/^    virtual std::string prepare_multisig() {$/;"	f	class:monero::monero_wallet
+prepare_multisig	wallet/monero_wallet_full.cpp	/^  std::string monero_wallet_full::prepare_multisig() {$/;"	f	class:monero::monero_wallet_full
+ptx_to_string	wallet/monero_wallet_full.cpp	/^  static std::string ptx_to_string(const tools::wallet2::pending_tx &ptx)$/;"	f	namespace:monero
+reconcile	utils/gen_utils.h	/^  boost::optional<T> reconcile(const boost::optional<T>& val1, const boost::optional<T>& val2, boost::optional<bool> resolve_defined, boost::optional<bool> resolve_true, boost::optional<bool> resolve_max, const std::string& err_msg = "") {$/;"	f	namespace:gen_utils
+reconcile	utils/gen_utils.h	/^  boost::optional<T> reconcile(const boost::optional<T>& val1, const boost::optional<T>& val2, const std::string& err_msg = "") {$/;"	f	namespace:gen_utils
+reconcile	utils/gen_utils.h	/^  std::vector<T> reconcile(const std::vector<T>& v1, const std::vector<T>& v2, const std::string& err_msg = "") {$/;"	f	namespace:gen_utils
+reconstruct_tx	wallet/monero_wallet.h	/^    virtual std::vector<std::shared_ptr<monero_tx_wallet>> reconstruct_tx(const std::string& multisig_tx_hex) {$/;"	f	class:monero::monero_wallet
+reconstruct_tx	wallet/monero_wallet.h	/^    virtual std::vector<std::shared_ptr<monero_tx_wallet>> reconstruct_tx(const std::string& multisig_tx_hex, const std::vector<monero::monero_destination>& destinations) {$/;"	f	class:monero::monero_wallet
+reconstruct_tx	wallet/monero_wallet_full.cpp	/^  std::vector<std::shared_ptr<monero_tx_wallet>> monero_wallet_full::reconstruct_tx(const std::string& multisig_tx_hex) {$/;"	f	class:monero::monero_wallet_full
+reconstruct_tx	wallet/monero_wallet_full.cpp	/^  std::vector<std::shared_ptr<monero_tx_wallet>> monero_wallet_full::reconstruct_tx(const std::string& multisig_tx_hex, const std::vector<monero::monero_destination>& destinations) {$/;"	f	class:monero::monero_wallet_full
+relay_tx	wallet/monero_wallet.h	/^    virtual std::string relay_tx(const monero_tx_wallet& tx) {$/;"	f	class:monero::monero_wallet
+relay_tx	wallet/monero_wallet.h	/^    virtual std::string relay_tx(const std::string& tx_metadata) {$/;"	f	class:monero::monero_wallet
+relay_txs	wallet/monero_wallet.h	/^    virtual std::vector<std::string> relay_txs(const std::vector<std::shared_ptr<monero_tx_wallet>>& txs) {$/;"	f	class:monero::monero_wallet
+relay_txs	wallet/monero_wallet.h	/^    virtual std::vector<std::string> relay_txs(const std::vector<std::string>& tx_metadatas) {$/;"	f	class:monero::monero_wallet
+relay_txs	wallet/monero_wallet_full.cpp	/^  std::vector<std::string> monero_wallet_full::relay_txs(const std::vector<std::string>& tx_metadatas) {$/;"	f	class:monero::monero_wallet_full
+remove_listener	wallet/monero_wallet.h	/^    virtual void remove_listener(monero_wallet_listener& listener) {$/;"	f	class:monero::monero_wallet
+remove_listener	wallet/monero_wallet_full.cpp	/^  void monero_wallet_full::remove_listener(monero_wallet_listener& listener) {$/;"	f	class:monero::monero_wallet_full
+rescan_blockchain	wallet/monero_wallet.h	/^    virtual void rescan_blockchain() {$/;"	f	class:monero::monero_wallet
+rescan_blockchain	wallet/monero_wallet_full.cpp	/^  void monero_wallet_full::rescan_blockchain() {$/;"	f	class:monero::monero_wallet_full
+rescan_spent	wallet/monero_wallet.h	/^    virtual void rescan_spent() {$/;"	f	class:monero::monero_wallet
+rescan_spent	wallet/monero_wallet_full.cpp	/^  void monero_wallet_full::rescan_spent() {$/;"	f	class:monero::monero_wallet_full
+run_sync_loop	wallet/monero_wallet_full.cpp	/^  void monero_wallet_full::run_sync_loop() {$/;"	f	class:monero::monero_wallet_full
+save	wallet/monero_wallet.h	/^    virtual void save() {$/;"	f	class:monero::monero_wallet
+save	wallet/monero_wallet_full.cpp	/^  void monero_wallet_full::save() {$/;"	f	class:monero::monero_wallet_full
+serializable_struct	daemon/monero_daemon_model.h	/^  struct serializable_struct {$/;"	s	namespace:monero
+serialize	daemon/monero_daemon_model.cpp	/^  std::string serializable_struct::serialize() const {$/;"	f	class:monero::serializable_struct
+serialize	utils/monero_utils.cpp	/^std::string monero_utils::serialize(const boost::property_tree::ptree& node) {$/;"	f	class:monero_utils
+serialize	utils/monero_utils.cpp	/^std::string monero_utils::serialize(const rapidjson::Document& doc) {$/;"	f	class:monero_utils
+set_attribute	wallet/monero_wallet.h	/^    virtual void set_attribute(const std::string& key, const std::string& val) {$/;"	f	class:monero::monero_wallet
+set_attribute	wallet/monero_wallet_full.cpp	/^  void monero_wallet_full::set_attribute(const std::string& key, const std::string& val) {$/;"	f	class:monero::monero_wallet_full
+set_daemon_connection	wallet/monero_wallet.h	/^    virtual void set_daemon_connection(const boost::optional<monero_rpc_connection>& connection) {$/;"	f	class:monero::monero_wallet
+set_daemon_connection	wallet/monero_wallet.h	/^    virtual void set_daemon_connection(const std::string& uri, const std::string& username = "", const std::string& password = "") {$/;"	f	class:monero::monero_wallet
+set_daemon_connection	wallet/monero_wallet_full.cpp	/^  void monero_wallet_full::set_daemon_connection(const boost::optional<monero_rpc_connection>& connection) {$/;"	f	class:monero::monero_wallet_full
+set_daemon_connection	wallet/monero_wallet_full.cpp	/^  void monero_wallet_full::set_daemon_connection(const std::string& uri, const std::string& username, const std::string& password) {$/;"	f	class:monero::monero_wallet_full
+set_num_confirmations	wallet/monero_wallet_full.cpp	/^  void set_num_confirmations(std::shared_ptr<monero_tx_wallet>& tx, uint64_t blockchain_height) {$/;"	f	namespace:monero
+set_num_suggested_confirmations	wallet/monero_wallet_full.cpp	/^  void set_num_suggested_confirmations(std::shared_ptr<monero_incoming_transfer>& incoming_transfer, uint64_t blockchain_height, uint64_t block_reward, uint64_t unlock_time) {$/;"	f	namespace:monero
+set_sync_height	wallet/monero_wallet.h	/^    virtual void set_sync_height(uint64_t sync_height) {$/;"	f	class:monero::monero_wallet
+set_sync_height	wallet/monero_wallet_full.cpp	/^  void monero_wallet_full::set_sync_height(uint64_t sync_height) {$/;"	f	class:monero::monero_wallet_full
+set_tx_note	wallet/monero_wallet.h	/^    virtual void set_tx_note(const std::string& tx_hash, const std::string& note) {$/;"	f	class:monero::monero_wallet
+set_tx_note	wallet/monero_wallet_full.cpp	/^  void monero_wallet_full::set_tx_note(const std::string& tx_hash, const std::string& note) {$/;"	f	class:monero::monero_wallet_full
+set_tx_notes	wallet/monero_wallet.h	/^    virtual void set_tx_notes(const std::vector<std::string>& tx_hashes, const std::vector<std::string>& notes) {$/;"	f	class:monero::monero_wallet
+set_tx_notes	wallet/monero_wallet_full.cpp	/^  void monero_wallet_full::set_tx_notes(const std::vector<std::string>& tx_hashes, const std::vector<std::string>& notes) {$/;"	f	class:monero::monero_wallet_full
+sign_message	wallet/monero_wallet.h	/^    virtual std::string sign_message(const std::string& msg, monero_message_signature_type signature_type, uint32_t account_idx = 0, uint32_t subaddress_idx = 0) const {$/;"	f	class:monero::monero_wallet
+sign_message	wallet/monero_wallet_full.cpp	/^  std::string monero_wallet_full::sign_message(const std::string& msg, monero_message_signature_type signature_type, uint32_t account_idx, uint32_t subaddress_idx) const {$/;"	f	class:monero::monero_wallet_full
+sign_message	wallet/monero_wallet_keys.cpp	/^  std::string monero_wallet_keys::sign_message(const std::string& msg, monero_message_signature_type signature_type, uint32_t account_idx, uint32_t subaddress_idx) const {$/;"	f	class:monero::monero_wallet_keys
+sign_multisig_tx_hex	wallet/monero_wallet.h	/^    virtual monero_multisig_sign_result sign_multisig_tx_hex(const std::string& multisig_tx_hex) {$/;"	f	class:monero::monero_wallet
+sign_multisig_tx_hex	wallet/monero_wallet_full.cpp	/^  monero_multisig_sign_result monero_wallet_full::sign_multisig_tx_hex(const std::string& multisig_tx_hex) {$/;"	f	class:monero::monero_wallet_full
+sign_multisig_tx_hex	wallet/monero_wallet_full.cpp	/^  monero_multisig_sign_result monero_wallet_full::sign_multisig_tx_hex(const std::string& multisig_tx_hex, const std::vector<monero::monero_destination>& destinations) {$/;"	f	class:monero::monero_wallet_full
+sign_txs	wallet/monero_wallet.h	/^    virtual std::string sign_txs(const std::string& unsigned_tx_hex) {$/;"	f	class:monero::monero_wallet
+sign_txs	wallet/monero_wallet_full.cpp	/^  std::string monero_wallet_full::sign_txs(const std::string& unsigned_tx_hex) {$/;"	f	class:monero::monero_wallet_full
+start_mining	wallet/monero_wallet.h	/^    virtual void start_mining(boost::optional<uint64_t> num_threads, boost::optional<bool> background_mining, boost::optional<bool> ignore_battery) {$/;"	f	class:monero::monero_wallet
+start_mining	wallet/monero_wallet_full.cpp	/^  void monero_wallet_full::start_mining(boost::optional<uint64_t> num_threads, boost::optional<bool> background_mining, boost::optional<bool> ignore_battery) {$/;"	f	class:monero::monero_wallet_full
+start_syncing	wallet/monero_wallet.h	/^    virtual void start_syncing(uint64_t sync_period_in_ms = 10000) {$/;"	f	class:monero::monero_wallet
+start_syncing	wallet/monero_wallet_full.cpp	/^  void monero_wallet_full::start_syncing(uint64_t sync_period_in_ms) {$/;"	f	class:monero::monero_wallet_full
+stop_mining	wallet/monero_wallet.h	/^    virtual void stop_mining() {$/;"	f	class:monero::monero_wallet
+stop_mining	wallet/monero_wallet_full.cpp	/^  void monero_wallet_full::stop_mining() {$/;"	f	class:monero::monero_wallet_full
+stop_syncing	wallet/monero_wallet.h	/^    virtual void stop_syncing() {$/;"	f	class:monero::monero_wallet
+stop_syncing	wallet/monero_wallet_full.cpp	/^  void monero_wallet_full::stop_syncing() {$/;"	f	class:monero::monero_wallet_full
+submit_multisig_tx_hex	wallet/monero_wallet.h	/^    virtual std::vector<std::string> submit_multisig_tx_hex(const std::string& signed_multisig_tx_hex) {$/;"	f	class:monero::monero_wallet
+submit_multisig_tx_hex	wallet/monero_wallet_full.cpp	/^  std::vector<std::string> monero_wallet_full::submit_multisig_tx_hex(const std::string& signed_multisig_tx_hex) {$/;"	f	class:monero::monero_wallet_full
+submit_txs	wallet/monero_wallet.h	/^    virtual std::vector<std::string> submit_txs(const std::string& signed_tx_hex) {$/;"	f	class:monero::monero_wallet
+submit_txs	wallet/monero_wallet_full.cpp	/^  std::vector<std::string> monero_wallet_full::submit_txs(const std::string& signed_tx_hex) {$/;"	f	class:monero::monero_wallet_full
+sweep_account	wallet/monero_wallet_full.cpp	/^  std::vector<std::shared_ptr<monero_tx_wallet>> monero_wallet_full::sweep_account(const monero_tx_config& config) {$/;"	f	class:monero::monero_wallet_full
+sweep_dust	wallet/monero_wallet.h	/^    virtual std::vector<std::shared_ptr<monero_tx_wallet>> sweep_dust(bool relay = false) {$/;"	f	class:monero::monero_wallet
+sweep_dust	wallet/monero_wallet_full.cpp	/^  std::vector<std::shared_ptr<monero_tx_wallet>> monero_wallet_full::sweep_dust(bool relay) {$/;"	f	class:monero::monero_wallet_full
+sweep_output	wallet/monero_wallet.h	/^    virtual std::shared_ptr<monero_tx_wallet> sweep_output(const monero_tx_config& config) {$/;"	f	class:monero::monero_wallet
+sweep_output	wallet/monero_wallet_full.cpp	/^  std::shared_ptr<monero_tx_wallet> monero_wallet_full::sweep_output(const monero_tx_config& config)  {$/;"	f	class:monero::monero_wallet_full
+sweep_unlocked	wallet/monero_wallet.h	/^    virtual std::vector<std::shared_ptr<monero_tx_wallet>> sweep_unlocked(const monero_tx_config& config) {$/;"	f	class:monero::monero_wallet
+sweep_unlocked	wallet/monero_wallet_full.cpp	/^  std::vector<std::shared_ptr<monero_tx_wallet>> monero_wallet_full::sweep_unlocked(const monero_tx_config& config) {$/;"	f	class:monero::monero_wallet_full
+sync	wallet/monero_wallet.h	/^    virtual monero_sync_result sync() {$/;"	f	class:monero::monero_wallet
+sync	wallet/monero_wallet.h	/^    virtual monero_sync_result sync(monero_wallet_listener& listener) {$/;"	f	class:monero::monero_wallet
+sync	wallet/monero_wallet.h	/^    virtual monero_sync_result sync(uint64_t start_height) {$/;"	f	class:monero::monero_wallet
+sync	wallet/monero_wallet.h	/^    virtual monero_sync_result sync(uint64_t start_height, monero_wallet_listener& listener) {$/;"	f	class:monero::monero_wallet
+sync	wallet/monero_wallet_full.cpp	/^  monero_sync_result monero_wallet_full::sync() {$/;"	f	class:monero::monero_wallet_full
+sync	wallet/monero_wallet_full.cpp	/^  monero_sync_result monero_wallet_full::sync(monero_wallet_listener& listener) {$/;"	f	class:monero::monero_wallet_full
+sync	wallet/monero_wallet_full.cpp	/^  monero_sync_result monero_wallet_full::sync(uint64_t start_height) {$/;"	f	class:monero::monero_wallet_full
+sync	wallet/monero_wallet_full.cpp	/^  monero_sync_result monero_wallet_full::sync(uint64_t start_height, monero_wallet_listener& listener) {$/;"	f	class:monero::monero_wallet_full
+sync_aux	wallet/monero_wallet_full.cpp	/^  monero_sync_result monero_wallet_full::sync_aux(boost::optional<uint64_t> start_height) {$/;"	f	class:monero::monero_wallet_full
+thaw_output	wallet/monero_wallet.h	/^    virtual void thaw_output(const std::string& key_image) {$/;"	f	class:monero::monero_wallet
+thaw_output	wallet/monero_wallet_full.cpp	/^  void monero_wallet_full::thaw_output(const std::string& key_image) {$/;"	f	class:monero::monero_wallet_full
+to_rapidjson_val	daemon/monero_daemon_model.cpp	/^  rapidjson::Value monero_block::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_block
+to_rapidjson_val	daemon/monero_daemon_model.cpp	/^  rapidjson::Value monero_block_header::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_block_header
+to_rapidjson_val	daemon/monero_daemon_model.cpp	/^  rapidjson::Value monero_key_image::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_key_image
+to_rapidjson_val	daemon/monero_daemon_model.cpp	/^  rapidjson::Value monero_output::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_output
+to_rapidjson_val	daemon/monero_daemon_model.cpp	/^  rapidjson::Value monero_rpc_connection::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_rpc_connection
+to_rapidjson_val	daemon/monero_daemon_model.cpp	/^  rapidjson::Value monero_tx::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_tx
+to_rapidjson_val	daemon/monero_daemon_model.cpp	/^  rapidjson::Value monero_version::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_version
+to_rapidjson_val	utils/monero_utils.cpp	/^rapidjson::Value monero_utils::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator, const std::vector<std::string>& strs) {$/;"	f	class:monero_utils
+to_rapidjson_val	utils/monero_utils.cpp	/^rapidjson::Value monero_utils::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator, const std::vector<uint32_t>& nums) {$/;"	f	class:monero_utils
+to_rapidjson_val	utils/monero_utils.cpp	/^rapidjson::Value monero_utils::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator, const std::vector<uint64_t>& nums) {$/;"	f	class:monero_utils
+to_rapidjson_val	utils/monero_utils.cpp	/^rapidjson::Value monero_utils::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator, const std::vector<uint8_t>& nums) {$/;"	f	class:monero_utils
+to_rapidjson_val	utils/monero_utils.h	/^  template <class T> rapidjson::Value to_rapidjson_val(rapidjson::Document::AllocatorType& allocator, const std::vector<T>& vals) {$/;"	f	namespace:monero_utils
+to_rapidjson_val	utils/monero_utils.h	/^  template <class T> rapidjson::Value to_rapidjson_val(rapidjson::Document::AllocatorType& allocator, const std::vector<std::shared_ptr<T>>& vals) {$/;"	f	namespace:monero_utils
+to_rapidjson_val	wallet/monero_wallet_model.cpp	/^  rapidjson::Value monero_account::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_account
+to_rapidjson_val	wallet/monero_wallet_model.cpp	/^  rapidjson::Value monero_address_book_entry::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_address_book_entry
+to_rapidjson_val	wallet/monero_wallet_model.cpp	/^  rapidjson::Value monero_check::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_check
+to_rapidjson_val	wallet/monero_wallet_model.cpp	/^  rapidjson::Value monero_check_reserve::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_check_reserve
+to_rapidjson_val	wallet/monero_wallet_model.cpp	/^  rapidjson::Value monero_check_tx::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_check_tx
+to_rapidjson_val	wallet/monero_wallet_model.cpp	/^  rapidjson::Value monero_destination::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_destination
+to_rapidjson_val	wallet/monero_wallet_model.cpp	/^  rapidjson::Value monero_incoming_transfer::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_incoming_transfer
+to_rapidjson_val	wallet/monero_wallet_model.cpp	/^  rapidjson::Value monero_integrated_address::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_integrated_address
+to_rapidjson_val	wallet/monero_wallet_model.cpp	/^  rapidjson::Value monero_key_image_import_result::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_key_image_import_result
+to_rapidjson_val	wallet/monero_wallet_model.cpp	/^  rapidjson::Value monero_message_signature_result::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_message_signature_result
+to_rapidjson_val	wallet/monero_wallet_model.cpp	/^  rapidjson::Value monero_multisig_info::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_multisig_info
+to_rapidjson_val	wallet/monero_wallet_model.cpp	/^  rapidjson::Value monero_multisig_init_result::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_multisig_init_result
+to_rapidjson_val	wallet/monero_wallet_model.cpp	/^  rapidjson::Value monero_multisig_sign_result::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_multisig_sign_result
+to_rapidjson_val	wallet/monero_wallet_model.cpp	/^  rapidjson::Value monero_outgoing_transfer::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_outgoing_transfer
+to_rapidjson_val	wallet/monero_wallet_model.cpp	/^  rapidjson::Value monero_output_query::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_output_query
+to_rapidjson_val	wallet/monero_wallet_model.cpp	/^  rapidjson::Value monero_output_wallet::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_output_wallet
+to_rapidjson_val	wallet/monero_wallet_model.cpp	/^  rapidjson::Value monero_subaddress::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_subaddress
+to_rapidjson_val	wallet/monero_wallet_model.cpp	/^  rapidjson::Value monero_sync_result::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_sync_result
+to_rapidjson_val	wallet/monero_wallet_model.cpp	/^  rapidjson::Value monero_transfer::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_transfer
+to_rapidjson_val	wallet/monero_wallet_model.cpp	/^  rapidjson::Value monero_transfer_query::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_transfer_query
+to_rapidjson_val	wallet/monero_wallet_model.cpp	/^  rapidjson::Value monero_tx_config::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_tx_config
+to_rapidjson_val	wallet/monero_wallet_model.cpp	/^  rapidjson::Value monero_tx_query::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_tx_query
+to_rapidjson_val	wallet/monero_wallet_model.cpp	/^  rapidjson::Value monero_tx_set::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_tx_set
+to_rapidjson_val	wallet/monero_wallet_model.cpp	/^  rapidjson::Value monero_tx_wallet::to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const {$/;"	f	class:monero::monero_tx_wallet
+total_amount	wallet/monero_wallet_full.cpp	/^  static uint64_t total_amount(const tools::wallet2::pending_tx &ptx)$/;"	f	namespace:monero
+tx_height_less_than	wallet/monero_wallet_full.cpp	/^  bool tx_height_less_than(const std::shared_ptr<monero_tx>& tx1, const std::shared_ptr<monero_tx>& tx2) {$/;"	f	namespace:monero
+update_listening	wallet/monero_wallet_full.cpp	/^    void update_listening() {$/;"	f	struct:monero::wallet2_listener
+validate_address	utils/monero_utils.cpp	/^void monero_utils::validate_address(const std::string& address, monero_network_type network_type) {$/;"	f	class:monero_utils
+validate_destinations	utils/monero_utils.cpp	/^bool monero_utils::MoneroDestinationValidator::validate_destinations(const tools::wallet2::multisig_tx_set& tx_set) {$/;"	f	class:monero_utils::MoneroDestinationValidator
+validate_private_spend_key	utils/monero_utils.cpp	/^void monero_utils::validate_private_spend_key(const std::string& private_spend_key) {$/;"	f	class:monero_utils
+validate_private_view_key	utils/monero_utils.cpp	/^void monero_utils::validate_private_view_key(const std::string& private_view_key) {$/;"	f	class:monero_utils
+validate_transfer	wallet/monero_wallet_full.cpp	/^  bool validate_transfer(wallet2* m_w2, const std::list<wallet_rpc::transfer_destination>& destinations, const std::string& payment_id, std::vector<cryptonote::tx_destination_entry>& dsts, std::vector<uint8_t>& extra, bool at_least_one_destination, epee::json_rpc::error& er)$/;"	f	namespace:monero
+verify_message	wallet/monero_wallet.h	/^    virtual monero_message_signature_result verify_message(const std::string& msg, const std::string& address, const std::string& signature) const {$/;"	f	class:monero::monero_wallet
+verify_message	wallet/monero_wallet_full.cpp	/^  monero_message_signature_result monero_wallet_full::verify_message(const std::string& msg, const std::string& address, const std::string& signature) const {$/;"	f	class:monero::monero_wallet_full
+verify_message	wallet/monero_wallet_keys.cpp	/^  monero_message_signature_result monero_wallet_keys::verify_message(const std::string& msg, const std::string& address, const std::string& signature) const {$/;"	f	class:monero::monero_wallet_keys
+verify_message_static	wallet/monero_wallet_full.cpp	/^  monero_message_signature_result monero_wallet_full::verify_message_static(const std::string& msg, const std::string& address, const std::string& signature, monero_network_type nettype) {$/;"	f	class:monero::monero_wallet_full
+vout_before	wallet/monero_wallet_full.cpp	/^  bool vout_before(const std::shared_ptr<monero_output>& o1, const std::shared_ptr<monero_output>& o2) {$/;"	f	namespace:monero
+wait_for_next_block	wallet/monero_wallet.h	/^    virtual uint64_t wait_for_next_block() {$/;"	f	class:monero::monero_wallet
+wait_for_next_block	wallet/monero_wallet_full.cpp	/^  uint64_t monero_wallet_full::wait_for_next_block() {$/;"	f	class:monero::monero_wallet_full
+wallet2_listener	wallet/monero_wallet_full.cpp	/^    wallet2_listener(monero_wallet_full& wallet, tools::wallet2& wallet2) : m_wallet(wallet), m_w2(wallet2) {$/;"	f	struct:monero::wallet2_listener
+wallet2_listener	wallet/monero_wallet_full.cpp	/^  struct wallet2_listener : public tools::i_wallet2_callback {$/;"	s	namespace:monero	file:
+wallet_exists	wallet/monero_wallet_full.cpp	/^  bool monero_wallet_full::wallet_exists(const std::string& path) {$/;"	f	class:monero::monero_wallet_full
+~monero_wallet	wallet/monero_wallet.h	/^    virtual ~monero_wallet() {}$/;"	f	class:monero::monero_wallet
+~monero_wallet_full	wallet/monero_wallet_full.cpp	/^  monero_wallet_full::~monero_wallet_full() {$/;"	f	class:monero::monero_wallet_full
+~monero_wallet_keys	wallet/monero_wallet_keys.cpp	/^  monero_wallet_keys::~monero_wallet_keys() {$/;"	f	class:monero::monero_wallet_keys
+~wallet2_listener	wallet/monero_wallet_full.cpp	/^    ~wallet2_listener() {$/;"	f	struct:monero::wallet2_listener
