@@ -160,6 +160,13 @@ namespace monero {
     }
 
     /**
+     * Set the Tor proxy to the daemon.
+     */
+    virtual void set_daemon_proxy(const std::string& uri = "") {
+      throw std::runtime_error("set_daemon_proxy() not supported");
+    }
+
+    /**
      * Get the wallet's daemon connection.
      *
      * @return the wallet's daemon connection
@@ -351,17 +358,17 @@ namespace monero {
      *
      * @return the height of the first block that the wallet scans
      */
-    virtual uint64_t get_sync_height() const {
-      throw std::runtime_error("get_sync_height() not supported");
+    virtual uint64_t get_restore_height() const {
+      throw std::runtime_error("get_restore_height() not supported");
     }
 
     /**
      * Set the height of the first block that the wallet scans.
      *
-     * @param sync_height is the height of the first block that the wallet scans
+     * @param restore_height is the height of the first block that the wallet scans
      */
-    virtual void set_sync_height(uint64_t sync_height) {
-      throw std::runtime_error("set_sync_height() not supported");
+    virtual void set_restore_height(uint64_t restore_height) {
+      throw std::runtime_error("set_restore_height() not supported");
     }
 
     /**
@@ -473,6 +480,15 @@ namespace monero {
      */
     virtual void stop_syncing() {
       throw std::runtime_error("stop_syncing() not supported");
+    }
+
+    /**
+     * Scan transactions by their hash/id.
+     *
+     * @param txHashes - tx hashes to scan
+     */
+    virtual void scan_txs(const std::vector<std::string>& tx_hashes) {
+      throw std::runtime_error("scan_txs() not supported");
     }
 
     /**
@@ -671,6 +687,17 @@ namespace monero {
      */
     virtual monero_subaddress create_subaddress(uint32_t account_idx, const std::string& label = "") {
       throw std::runtime_error("create_subaddress() not supported");
+    }
+
+    /**
+     * Set a subaddress label.
+     *
+     * @param account_idx index of the account to set the label for
+     * @param subaddress_idx index of the subaddress to set the label for
+     * @param label the label to set
+     */
+    virtual void set_subaddress_label(uint32_t account_idx, uint32_t subaddress_idx, const std::string& label = "") {
+      throw std::runtime_error("set_subaddress_label() not supported");
     }
 
     /**
