@@ -68,10 +68,8 @@ namespace monero {
     boost::optional<std::string> m_path;
     boost::optional<std::string> m_password;
     boost::optional<monero_network_type> m_network_type;
-    boost::optional<std::string> m_server_uri;
-    boost::optional<std::string> m_server_username;
-    boost::optional<std::string> m_server_password;
-    boost::optional<std::string> m_mnemonic;
+    boost::optional<monero_rpc_connection> m_server;
+    boost::optional<std::string> m_seed;
     boost::optional<std::string> m_seed_offset;
     boost::optional<std::string> m_primary_address;
     boost::optional<std::string> m_private_view_key;
@@ -81,14 +79,13 @@ namespace monero {
     boost::optional<bool> m_save_current;
     boost::optional<uint64_t> m_account_lookahead;
     boost::optional<uint64_t> m_subaddress_lookahead;
+    boost::optional<bool> m_is_multisig;
 
     monero_wallet_config() {}
     monero_wallet_config(const monero_wallet_config& config);
     monero_wallet_config copy() const;
     rapidjson::Value to_rapidjson_val(rapidjson::Document::AllocatorType& allocator) const;
     static std::shared_ptr<monero_wallet_config> deserialize(const std::string& config_json);
-    void set_server(const monero_rpc_connection& server);
-    monero_rpc_connection get_server() const;
   };
 
   /**
@@ -375,13 +372,14 @@ namespace monero {
     boost::optional<std::string> m_address;
     boost::optional<uint64_t> m_amount;
     std::vector<std::shared_ptr<monero_destination>> m_destinations;
+    std::vector<uint32_t> m_subtract_fee_from;
     boost::optional<std::string> m_payment_id;
     boost::optional<monero_tx_priority> m_priority;
     boost::optional<uint32_t> m_ring_size;
     boost::optional<uint64_t> m_fee;
     boost::optional<uint32_t> m_account_index;
     std::vector<uint32_t> m_subaddress_indices;
-    boost::optional<uint64_t> m_unlock_height;
+    boost::optional<uint64_t> m_unlock_time;
     boost::optional<bool> m_can_split;
     boost::optional<bool> m_relay;
     boost::optional<std::string> m_note;

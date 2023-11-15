@@ -96,10 +96,8 @@ namespace monero {
     m_path = config.m_path;
     m_password = config.m_password;
     m_network_type = config.m_network_type;
-    m_server_uri = config.m_server_uri;
-    m_server_username = config.m_server_username;
-    m_server_password = config.m_server_password;
-    m_mnemonic = config.m_mnemonic;
+    m_server = config.m_server;
+    m_seed = config.m_seed;
     m_seed_offset = config.m_seed_offset;
     m_primary_address = config.m_primary_address;
     m_private_view_key = config.m_private_view_key;
@@ -109,6 +107,7 @@ namespace monero {
     m_save_current = config.m_save_current;
     m_account_lookahead = config.m_account_lookahead;
     m_subaddress_lookahead = config.m_subaddress_lookahead;
+    m_is_multisig = config.m_is_multisig;
   }
 
   monero_wallet_config monero_wallet_config::copy() const {
@@ -119,6 +118,9 @@ namespace monero {
 
     // create root
     rapidjson::Value root(rapidjson::kObjectType);
+
+    // set sub-objects
+    if (m_server != boost::none) root.AddMember("server", m_server.get().to_rapidjson_val(allocator), allocator);
 
     // set num values
     rapidjson::Value value_num(rapidjson::kNumberType);
@@ -131,10 +133,7 @@ namespace monero {
     rapidjson::Value value_str(rapidjson::kStringType);
     if (m_path != boost::none) monero_utils::add_json_member("path", m_path.get(), allocator, root, value_str);
     if (m_password != boost::none) monero_utils::add_json_member("password", m_password.get(), allocator, root, value_str);
-    if (m_server_uri != boost::none) monero_utils::add_json_member("serverUri", m_server_uri.get(), allocator, root, value_str);
-    if (m_server_username != boost::none) monero_utils::add_json_member("serverUsername", m_server_username.get(), allocator, root, value_str);
-    if (m_server_password != boost::none) monero_utils::add_json_member("serverPassword", m_server_password.get(), allocator, root, value_str);
-    if (m_mnemonic != boost::none) monero_utils::add_json_member("mnemonic", m_mnemonic.get(), allocator, root, value_str);
+    if (m_seed != boost::none) monero_utils::add_json_member("seed", m_seed.get(), allocator, root, value_str);
     if (m_seed_offset != boost::none) monero_utils::add_json_member("seedOffset", m_seed_offset.get(), allocator, root, value_str);
     if (m_primary_address != boost::none) monero_utils::add_json_member("primaryAddress", m_primary_address.get(), allocator, root, value_str);
     if (m_private_view_key != boost::none) monero_utils::add_json_member("privateViewKey", m_private_view_key.get(), allocator, root, value_str);
@@ -145,6 +144,7 @@ namespace monero {
 
     // set bool values
     if (m_save_current != boost::none) monero_utils::add_json_member("saveCurrent", m_save_current.get(), allocator, root);
+    if (m_is_multisig != boost::none) monero_utils::add_json_member("isMultisig", m_is_multisig.get(), allocator, root);
 
     // return root
     return root;
@@ -170,10 +170,8 @@ namespace monero {
         else if (network_type_num == 2) config->m_network_type = monero_network_type::STAGENET;
         else throw std::runtime_error("Invalid network type number: " + std::to_string(network_type_num));
       }
-      else if (key == std::string("serverUri")) config->m_server_uri = it->second.data();
-      else if (key == std::string("serverUsername")) config->m_server_username = it->second.data();
-      else if (key == std::string("serverPassword")) config->m_server_password = it->second.data();
-      else if (key == std::string("mnemonic")) config->m_mnemonic = it->second.data();
+      else if (key == std::string("server")) config->m_server = monero_rpc_connection::from_property_tree(it->second);
+      else if (key == std::string("seed")) config->m_seed = it->second.data();
       else if (key == std::string("seedOffset")) config->m_seed_offset = it->second.data();
       else if (key == std::string("primaryAddress")) config->m_primary_address = it->second.data();
       else if (key == std::string("privateViewKey")) config->m_private_view_key = it->second.data();
@@ -183,22 +181,10 @@ namespace monero {
       else if (key == std::string("saveCurrent")) config->m_save_current = it->second.get_value<bool>();
       else if (key == std::string("accountLookahead")) config->m_account_lookahead = it->second.get_value<uint64_t>();
       else if (key == std::string("subaddressLookahead")) config->m_subaddress_lookahead = it->second.get_value<uint64_t>();
+      else if (key == std::string("isMultisig")) config->m_is_multisig = it->second.get_value<bool>();
     }
 
     return config;
-  }
-
-  void monero_wallet_config::set_server(const monero_rpc_connection& server) {
-    m_server_uri = server.m_uri;
-    m_server_username = server.m_username;
-    m_server_password = server.m_password;
-  }
-
-  monero_rpc_connection monero_wallet_config::get_server() const {
-    return monero_rpc_connection(
-        std::string(m_server_uri == boost::none ? "" : m_server_uri.get()),
-        std::string(m_server_username == boost::none ? "" : m_server_username.get()),
-        std::string(m_server_password == boost::none ? "" : m_server_password.get()));
   }
 
   // -------------------------- MONERO SYNC RESULT ----------------------------
@@ -1280,13 +1266,14 @@ namespace monero {
         m_destinations.push_back(destination->copy(destination, std::make_shared<monero_destination>()));
       }
     }
+    m_subtract_fee_from = config.m_subtract_fee_from;
     m_payment_id = config.m_payment_id;
     m_priority = config.m_priority;
     m_ring_size = config.m_ring_size;
     m_fee = config.m_fee;
     m_account_index = config.m_account_index;
     m_subaddress_indices = config.m_subaddress_indices;
-    m_unlock_height = config.m_unlock_height;
+    m_unlock_time = config.m_unlock_time;
     m_can_split = config.m_can_split;
     m_relay = config.m_relay;
     m_note = config.m_note;
@@ -1312,7 +1299,7 @@ namespace monero {
     if (m_ring_size != boost::none) monero_utils::add_json_member("ringSize", m_ring_size.get(), allocator, root, value_num);
     if (m_fee != boost::none) monero_utils::add_json_member("fee", m_fee.get(), allocator, root, value_num);
     if (m_account_index != boost::none) monero_utils::add_json_member("accountIndex", m_account_index.get(), allocator, root, value_num);
-    if (m_unlock_height != boost::none) monero_utils::add_json_member("unlockHeight", m_unlock_height.get(), allocator, root, value_num);
+    if (m_unlock_time != boost::none) monero_utils::add_json_member("unlockTime", m_unlock_time.get(), allocator, root, value_num);
     if (m_below_amount != boost::none) monero_utils::add_json_member("belowAmount", m_below_amount.get(), allocator, root, value_num);
 
     // set string values
@@ -1331,6 +1318,7 @@ namespace monero {
     // set sub-arrays
     if (!m_destinations.empty()) root.AddMember("destinations", monero_utils::to_rapidjson_val(allocator, m_destinations), allocator);
     if (!m_subaddress_indices.empty()) root.AddMember("subaddressIndices", monero_utils::to_rapidjson_val(allocator, m_subaddress_indices), allocator);
+    if (!m_subtract_fee_from.empty()) root.AddMember("subtractFeeFrom", monero_utils::to_rapidjson_val(allocator, m_subtract_fee_from), allocator);
 
     // return root
     return root;
@@ -1355,6 +1343,7 @@ namespace monero {
           config->m_destinations.push_back(destination);
         }
       }
+      else if (key == std::string("subtractFeeFrom")) for (boost::property_tree::ptree::const_iterator it2 = it->second.begin(); it2 != it->second.end(); ++it2) config->m_subtract_fee_from.push_back(it2->second.get_value<uint32_t>());
       else if (key == std::string("paymentId")) config->m_payment_id = it->second.data();
       else if (key == std::string("priority")) {
         uint32_t priority_num = it->second.get_value<uint32_t>();
@@ -1368,7 +1357,7 @@ namespace monero {
       else if (key == std::string("fee")) config->m_fee = it->second.get_value<uint64_t>();
       else if (key == std::string("accountIndex")) config->m_account_index = it->second.get_value<uint32_t>();
       else if (key == std::string("subaddressIndices")) for (boost::property_tree::ptree::const_iterator it2 = it->second.begin(); it2 != it->second.end(); ++it2) config->m_subaddress_indices.push_back(it2->second.get_value<uint32_t>());
-      else if (key == std::string("unlockHeight")) config->m_unlock_height = it->second.get_value<uint64_t>();
+      else if (key == std::string("unlockTime")) config->m_unlock_time = it->second.get_value<uint64_t>();
       else if (key == std::string("canSplit")) config->m_can_split = it->second.get_value<bool>();
       else if (key == std::string("relay")) config->m_relay = it->second.get_value<bool>();
       else if (key == std::string("note")) config->m_note = it->second.data();

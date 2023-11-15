@@ -62,6 +62,14 @@
 using namespace cryptonote;
 using namespace monero_utils;
 
+void monero_utils::set_log_level(int level) {
+  mlog_set_log_level(level);
+}
+
+void monero_utils::configure_logging(const std::string& path, bool console) {
+  mlog_configure(path, console);
+}
+
 // --------------------------- VALIDATION UTILS -------------------------------
 
 monero_integrated_address monero_utils::get_integrated_address(monero_network_type network_type, const std::string& standard_address, const std::string& payment_id) {
@@ -324,7 +332,7 @@ std::shared_ptr<monero_block> monero_utils::cn_block_to_block(const cryptonote::
 std::shared_ptr<monero_tx> monero_utils::cn_tx_to_tx(const cryptonote::transaction& cn_tx, bool init_as_tx_wallet) {
   std::shared_ptr<monero_tx> tx = init_as_tx_wallet ? std::make_shared<monero_tx_wallet>() : std::make_shared<monero_tx>();
   tx->m_version = cn_tx.version;
-  tx->m_unlock_height = cn_tx.unlock_time;
+  tx->m_unlock_time = cn_tx.unlock_time;
   tx->m_hash = epee::string_tools::pod_to_hex(cn_tx.hash);
   tx->m_extra = cn_tx.extra;
 
